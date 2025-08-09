@@ -2,6 +2,24 @@
 
 # 🎭 MANGA-SEC: Cybersecurity Adventures
 <img src="Manga-Sec-Logo.png" alt="Manga-Sec Logo" width="300" height="350" />
+</div>
+
+<div align="center">
+
+[![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
+[![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
+[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+[![Local Storage](https://img.shields.io/badge/LocalStorage-4285F4?style=for-the-badge&logo=google-chrome&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)
+[![Responsive Design](https://img.shields.io/badge/Responsive-Design-00C4B4?style=for-the-badge&logo=responsive&logoColor=white)](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Responsive_Design)
+[![Progressive Web App](https://img.shields.io/badge/PWA-4285F4?style=for-the-badge&logo=pwa&logoColor=white)](https://web.dev/progressive-web-apps/)
+[![MIT License](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
+
+</div>
+
+> **A Black & White Manga Comic-Themed Cybersecurity Quiz Application**
+> *Learn cybersecurity through interactive manga-style adventures with AI ethics integration*
+
+---
 
 ```
 ███╗   ███╗ █████╗ ███╗   ██╗ ██████╗  █████╗     ███████╗███████╗ ██████╗
@@ -22,23 +40,6 @@
 ║  ╚═════╝ ╚═════╝ ╚═╝     ╚═╝╚═╝ ╚═════╝     ╚═╝        ╚═╝   ╚═╝  ╚═╝   ◑
 ╚══════════════════════════════════════════════════════════════════════════════╝
 ```
-
-</div>
-
-<div align="center">
-
-[![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
-[![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
-[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
-[![Local Storage](https://img.shields.io/badge/LocalStorage-4285F4?style=for-the-badge&logo=google-chrome&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)
-[![Responsive Design](https://img.shields.io/badge/Responsive-Design-00C4B4?style=for-the-badge&logo=responsive&logoColor=white)](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Responsive_Design)
-[![Progressive Web App](https://img.shields.io/badge/PWA-4285F4?style=for-the-badge&logo=pwa&logoColor=white)](https://web.dev/progressive-web-apps/)
-[![MIT License](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
-
-</div>
-
-> **A Black & White Manga Comic-Themed Cybersecurity Quiz Application**
-> *Learn cybersecurity through interactive manga-style adventures with AI ethics integration*
 
 ---
 
