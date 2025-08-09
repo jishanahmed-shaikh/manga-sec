@@ -22,6 +22,7 @@
 > **A Black & White Manga Comic-Themed Cybersecurity Quiz Application**
 > *Focused on Ethical Considerations of A.I, Learn cybersecurity through interactive manga-style adventures with AI ethics integration*
 </div>
+
 ---
 
 ```
