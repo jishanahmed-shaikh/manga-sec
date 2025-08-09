@@ -1,0 +1,685 @@
+/* BLACK & WHITE MANGA COMIC THEME - CYBERSECURITY ADVENTURES */
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@400;700&family=Press+Start+2P&display=swap');
+
+:root {
+    --comic-black: #000000;
+    --comic-white: #ffffff;
+    --comic-gray: #666666;
+    --comic-light-gray: #f0f0f0;
+    --comic-dark-gray: #333333;
+    --comic-accent: #000000;
+    --comic-border: #000000;
+    --comic-shadow: rgba(0, 0, 0, 0.3);
+    --comic-text: #000000;
+    --comic-bg: #ffffff;
+    --comic-panel-bg: #f8f8f8;
+    --comic-highlight: #e0e0e0;
+    --comic-red: #cc0000;
+    --comic-blue: #0066cc;
+    --comic-green: #00cc00;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--comic-bg);
+    color: var(--comic-text);
+    font-family: 'Comic Neue', 'Comic Sans MS', cursive;
+    line-height: 1.6;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    min-height: 100vh;
+}
+
+/* COMIC PAGE LAYOUT */
+.comic-page {
+    background: var(--comic-bg);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+/* COMIC HEADER */
+.comic-header {
+    background: var(--comic-black);
+    color: var(--comic-white);
+    padding: 20px;
+    text-align: center;
+    border-bottom: 4px solid var(--comic-black);
+    box-shadow: 0 4px 8px var(--comic-shadow);
+}
+
+.manga-title {
+    font-family: 'Bangers', cursive;
+    font-size: 4em;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    margin-bottom: 10px;
+    text-shadow: 3px 3px 0px var(--comic-gray);
+    line-height: 1;
+}
+
+.comic-subtitle {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 1em;
+    color: var(--comic-light-gray);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* COMIC CONTAINER */
+.comic-container {
+    flex: 1;
+    padding: 40px 20px;
+    background: var(--comic-bg);
+    position: relative;
+}
+
+/* COMIC PANELS */
+.comic-panel {
+    background: var(--comic-panel-bg);
+    border: 4px solid var(--comic-black);
+    border-radius: 0;
+    padding: 40px;
+    margin: 20px auto;
+    max-width: 800px;
+    position: relative;
+    box-shadow: 
+        8px 8px 0px var(--comic-black),
+        0 0 0 2px var(--comic-white),
+        0 0 0 6px var(--comic-black);
+    transform: rotate(-1deg);
+    transition: all 0.3s ease;
+}
+
+.comic-panel:hover {
+    transform: rotate(0deg) scale(1.02);
+    box-shadow: 
+        12px 12px 0px var(--comic-black),
+        0 0 0 2px var(--comic-white),
+        0 0 0 8px var(--comic-black);
+}
+
+.comic-panel::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: -8px;
+    right: -8px;
+    bottom: -8px;
+    background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 10px,
+        var(--comic-black) 10px,
+        var(--comic-black) 12px
+    );
+    z-index: -1;
+    opacity: 0.1;
+}
+
+/* MANGA STYLE PANELS */
+.manga-panel {
+    background: var(--comic-white);
+    border: 6px solid var(--comic-black);
+    border-radius: 0;
+    padding: 30px;
+    margin: 25px auto;
+    max-width: 700px;
+    position: relative;
+    box-shadow: 
+        10px 10px 0px var(--comic-black),
+        0 0 0 3px var(--comic-white),
+        0 0 0 9px var(--comic-black);
+    transform: rotate(1deg);
+}
+
+.manga-panel::after {
+    content: '';
+    position: absolute;
+    top: -15px;
+    left: -15px;
+    right: -15px;
+    bottom: -15px;
+    background: 
+        radial-gradient(circle at 20% 20%, var(--comic-light-gray) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, var(--comic-highlight) 0%, transparent 50%);
+    z-index: -1;
+    opacity: 0.3;
+}
+
+/* SPEECH BUBBLES */
+.speech-bubble {
+    background: var(--comic-white);
+    border: 3px solid var(--comic-black);
+    border-radius: 20px;
+    padding: 25px;
+    margin: 20px auto;
+    max-width: 600px;
+    position: relative;
+    box-shadow: 4px 4px 0px var(--comic-black);
+}
+
+.speech-bubble::before {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 30px;
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-top: 15px solid var(--comic-black);
+}
+
+.speech-bubble::after {
+    content: '';
+    position: absolute;
+    bottom: -12px;
+    left: 32px;
+    width: 0;
+    height: 0;
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    border-top: 12px solid var(--comic-white);
+}
+
+/* COMIC TYPOGRAPHY */
+.title {
+    font-family: 'Bangers', cursive;
+    font-size: 3.5em;
+    font-weight: 400;
+    margin-bottom: 30px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--comic-black);
+    text-shadow: 3px 3px 0px var(--comic-gray);
+    line-height: 1;
+}
+
+.comic-title {
+    font-family: 'Bangers', cursive;
+    font-size: 2.5em;
+    margin-bottom: 25px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--comic-black);
+    text-shadow: 2px 2px 0px var(--comic-gray);
+    line-height: 1;
+}
+
+.comic-text {
+    font-size: 1.4em;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    color: var(--comic-black);
+    font-weight: 500;
+    text-align: center;
+}
+
+.intro {
+    font-size: 1.3em;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    color: var(--comic-black);
+    font-weight: 500;
+    text-align: center;
+}
+
+/* COMIC BUTTONS */
+.button {
+    background: var(--comic-white);
+    color: var(--comic-black);
+    border: 3px solid var(--comic-black);
+    padding: 15px 30px;
+    margin: 15px;
+    font-family: 'Comic Neue', cursive;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 1.2em;
+    border-radius: 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    overflow: hidden;
+    min-width: 200px;
+    box-shadow: 4px 4px 0px var(--comic-black);
+    text-shadow: none;
+}
+
+.button:hover {
+    background: var(--comic-black);
+    color: var(--comic-white);
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px var(--comic-black);
+}
+
+.button:active {
+    transform: translate(0px, 0px);
+    box-shadow: 2px 2px 0px var(--comic-black);
+}
+
+.option-btn {
+    display: block;
+    width: 100%;
+    margin: 15px 0;
+    text-align: center;
+    min-width: 300px;
+}
+
+/* QUIZ ELEMENTS */
+.quiz-progress {
+    background: var(--comic-black);
+    color: var(--comic-white);
+    padding: 15px 25px;
+    border-radius: 0;
+    margin-bottom: 25px;
+    font-weight: bold;
+    border: 3px solid var(--comic-black);
+    font-size: 1.1em;
+    font-family: 'Press Start 2P', monospace;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 4px 4px 0px var(--comic-gray);
+    text-align: center;
+}
+
+.question {
+    font-size: 1.8em;
+    margin-bottom: 30px;
+    color: var(--comic-black);
+    line-height: 1.4;
+    font-family: 'Comic Neue', cursive;
+    font-weight: 700;
+    text-align: center;
+    text-shadow: 1px 1px 0px var(--comic-gray);
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+}
+
+/* BADGE AND SUCCESS */
+.badge {
+    background: var(--comic-white);
+    color: var(--comic-black);
+    padding: 25px;
+    font-size: 1.8em;
+    border-radius: 0;
+    font-weight: bold;
+    border: 4px solid var(--comic-black);
+    margin-bottom: 25px;
+    text-shadow: 2px 2px 0px var(--comic-gray);
+    font-family: 'Bangers', cursive;
+    text-transform: uppercase;
+    box-shadow: 6px 6px 0px var(--comic-black);
+    text-align: center;
+}
+
+.success-text {
+    font-size: 1.4em;
+    margin-bottom: 25px;
+    color: var(--comic-black);
+    font-family: 'Comic Neue', cursive;
+    font-weight: 700;
+    text-align: center;
+    text-shadow: 1px 1px 0px var(--comic-gray);
+}
+
+/* LOADING PANEL */
+.loading-panel {
+    background: var(--comic-panel-bg);
+    border: 4px solid var(--comic-black);
+    border-radius: 0;
+    padding: 60px 40px;
+    margin: 40px auto;
+    max-width: 500px;
+    text-align: center;
+    box-shadow: 
+        8px 8px 0px var(--comic-black),
+        0 0 0 2px var(--comic-white),
+        0 0 0 6px var(--comic-black);
+    transform: rotate(-1deg);
+}
+
+.loading-text {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 1.2em;
+    color: var(--comic-black);
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.loading-dots {
+    font-family: 'Bangers', cursive;
+    font-size: 2em;
+    color: var(--comic-black);
+    animation: loadingDots 1.5s infinite;
+}
+
+@keyframes loadingDots {
+    0%, 20% { opacity: 0.2; }
+    50% { opacity: 1; }
+    80%, 100% { opacity: 0.2; }
+}
+
+/* COMIC FOOTER */
+.comic-footer {
+    background: var(--comic-black);
+    color: var(--comic-white);
+    padding: 20px;
+    text-align: center;
+    border-top: 4px solid var(--comic-black);
+    box-shadow: 0 -4px 8px var(--comic-shadow);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.page-number {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.8em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.comic-info {
+    font-family: 'Comic Neue', cursive;
+    font-size: 0.9em;
+    font-weight: 500;
+}
+
+/* MANGA STYLE DECORATIONS */
+.manga-decoration {
+    position: absolute;
+    font-size: 4em;
+    opacity: 0.1;
+    color: var(--comic-black);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.manga-decoration:nth-child(odd) {
+    top: 10%;
+    left: 5%;
+    transform: rotate(-15deg);
+}
+
+.manga-decoration:nth-child(even) {
+    top: 60%;
+    right: 5%;
+    transform: rotate(15deg);
+}
+
+.manga-decoration:nth-child(3n) {
+    top: 30%;
+    left: 80%;
+    transform: rotate(45deg);
+}
+
+/* MANGA ARTWORK BACKGROUND */
+.manga-artwork-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.manga-artwork {
+    position: absolute;
+    color: var(--comic-black);
+    pointer-events: none;
+    z-index: -1;
+    transition: all 0.3s ease;
+    animation: float 6s ease-in-out infinite;
+}
+
+.manga-artwork:nth-child(odd) {
+    animation-delay: 0s;
+}
+
+.manga-artwork:nth-child(even) {
+    animation-delay: 2s;
+}
+
+.manga-artwork:nth-child(3n) {
+    animation-delay: 4s;
+}
+
+@keyframes float {
+    0%, 100% { 
+        transform: translateY(0px) rotate(var(--rotation, 0deg)); 
+    }
+    50% { 
+        transform: translateY(-10px) rotate(var(--rotation, 0deg)); 
+    }
+}
+
+/* COMIC GRID BACKGROUND */
+.comic-grid {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px);
+    background-size: 20px 20px;
+    pointer-events: none;
+    z-index: -2;
+}
+
+/* HALFTONE EFFECT */
+.halftone {
+    background-image: radial-gradient(circle at 1px 1px, var(--comic-black) 1px, transparent 0);
+    background-size: 8px 8px;
+    background-position: 0 0;
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 768px) {
+    .manga-title {
+        font-size: 2.5em;
+        letter-spacing: 2px;
+    }
+    
+    .comic-subtitle {
+        font-size: 0.8em;
+        letter-spacing: 1px;
+    }
+    
+    .comic-panel {
+        max-width: 95vw;
+        padding: 25px;
+        margin: 15px;
+    }
+    
+    .manga-panel {
+        max-width: 90vw;
+        padding: 20px;
+        margin: 20px;
+    }
+    
+    .title {
+        font-size: 2.5em;
+    }
+    
+    .comic-title {
+        font-size: 2em;
+    }
+    
+    .comic-text {
+        font-size: 1.2em;
+    }
+    
+    .question {
+        font-size: 1.4em;
+    }
+    
+    .button {
+        padding: 12px 25px;
+        font-size: 1em;
+        min-width: 180px;
+    }
+    
+    .comic-footer {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .page-number, .comic-info {
+        font-size: 0.7em;
+    }
+    
+    .time-info {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .ist-time {
+        font-size: 1em;
+    }
+    
+    .countdown-timer {
+        min-width: 180px;
+        padding: 12px 15px;
+    }
+    
+    .countdown-time {
+        font-size: 1.2em;
+    }
+    
+    .badge-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .badge-gallery {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .comic-container {
+        padding: 20px 10px;
+    }
+    
+    .comic-panel {
+        padding: 20px;
+        margin: 10px;
+    }
+    
+    .manga-panel {
+        padding: 15px;
+        margin: 15px;
+    }
+    
+    .button {
+        min-width: 160px;
+        padding: 10px 20px;
+        font-size: 0.9em;
+    }
+    
+    .time-info {
+        padding: 10px;
+        margin: 15px 0;
+    }
+    
+    .ist-time {
+        font-size: 0.9em;
+    }
+    
+    .countdown-timer {
+        min-width: 150px;
+        padding: 10px 12px;
+    }
+    
+    .countdown-time {
+        font-size: 1em;
+    }
+    
+    .manga-artwork {
+        font-size: 2em !important;
+    }
+}
+
+        .quiz-info {
+            background: var(--comic-light-gray);
+            padding: 15px;
+            margin: 15px 0;
+            border: 2px solid var(--comic-black);
+            font-size: 0.9em;
+        }
+        
+        .time-info {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 20px 0;
+            padding: 15px;
+            background: var(--comic-light-gray);
+            border: 2px solid var(--comic-black);
+            border-radius: 0;
+            box-shadow: 3px 3px 0px var(--comic-gray);
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .ist-time {
+            font-size: 1.1em;
+            font-weight: bold;
+            color: var(--comic-blue);
+            font-family: 'Press Start 2P', monospace;
+            text-align: center;
+        }
+        
+        .countdown-timer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: var(--comic-black);
+            background: var(--comic-white);
+            padding: 15px 20px;
+            border: 3px solid var(--comic-black);
+            border-radius: 0;
+            box-shadow: 4px 4px 0px var(--comic-gray);
+            min-width: 200px;
+        }
+        
+        .countdown-label {
+            margin-bottom: 10px;
+            font-size: 0.9em;
+            color: var(--comic-dark-gray);
+            font-family: 'Comic Neue', cursive;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .countdown-time {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 1.4em;
+            color: var(--comic-red);
+            text-shadow: 2px 2px 0px var(--comic-gray);
+        }
