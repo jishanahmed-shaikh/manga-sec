@@ -14,6 +14,8 @@
 [![Progressive Web App](https://img.shields.io/badge/PWA-4285F4?style=for-the-badge&logo=pwa&logoColor=white)](https://web.dev/progressive-web-apps/)
 [![MIT License](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
 
+**Why Manga-Sec was Made -> [Ethical AI & Cybersecurity](https://www.youtube.com/watch?v=eatX6_Wr978)
+
 </div>
 
 ---
@@ -623,3 +625,4 @@ SOFTWARE.
 *Empowering Ethical Considertations of AI via Cybersecurity Education through Manga-Style Adventures*
 
 </div>
+
