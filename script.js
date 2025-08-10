@@ -148,6 +148,45 @@ const mangaArtwork = [
     { icon: '⚡', style: 'top: 85%; left: 80%; transform: rotate(-15deg); font-size: 2.7em;' }
 ];
 
+// Side panel image configuration for different pages/sections
+const embeddedImages = {
+    home: {
+        left: { src: '4Grid-1.png', caption: 'CYBER WARRIOR', position: 'left' },
+        right: { src: 'ActionPush.png', caption: 'ACTION HERO', position: 'right' }
+    },
+    intro: {
+        left: { src: 'Pose1-Stop.png', caption: 'STOP & THINK', position: 'left' },
+        right: { src: 'Pose2-Laptop.png', caption: 'DIGITAL DEFENDER', position: 'right' }
+    },
+    quiz: {
+        left: { src: 'ActionPush.png', caption: 'PUSH FORWARD', position: 'left' },
+        right: { src: '4Grid-1.png', caption: 'GRID MASTER', position: 'right' }
+    },
+    results: {
+        left: { src: 'Pose2-Laptop.png', caption: 'VICTORY POSE', position: 'left' },
+        right: { src: 'Pose1-Stop.png', caption: 'MISSION COMPLETE', position: 'right' }
+    }
+};
+
+// Function to create embedded image HTML
+function createEmbeddedImage(imageConfig) {
+    return `
+        <div class="image-container">
+            <img src="${imageConfig.src}" alt="${imageConfig.caption}" class="embedded-image ${imageConfig.position}">
+            <div class="image-caption">${imageConfig.caption}</div>
+        </div>
+    `;
+}
+
+// Function to get embedded images for a page type
+function getEmbeddedImages(pageType) {
+    const config = embeddedImages[pageType] || embeddedImages.home;
+    return {
+        left: createEmbeddedImage(config.left),
+        right: createEmbeddedImage(config.right)
+    };
+}
+
 // Quiz rotation system - changes every 12 hours
 const QUIZ_ROTATION_HOURS = 12;
 let currentQuizIndex = 0;
@@ -424,24 +463,29 @@ function showPanel(html, panelType = 'comic-panel') {
 
 // 3-Panel Comic Intro with Manga Theme
 function showComicIntro() {
+    const images = getEmbeddedImages('intro');
+    
     const panels = [
         {
             title: "🌐 THE DIGITAL FRONTIER",
             content: "In a world where data flows like digital rivers and AI thinks like humans, cybersecurity becomes the shield that protects our digital future. Welcome to the manga era of cyber defense.",
             sound: "💥",
-            panelClass: "manga-panel"
+            panelClass: "manga-panel",
+            image: images.left
         },
         {
             title: "⚔️ THE BATTLE BEGINS",
             content: "Hackers lurk in the shadows of the digital realm, exploiting vulnerabilities. But you have the power to become a cyber defender! The choice is yours, brave warrior.",
             sound: "⚡",
-            panelClass: "speech-bubble"
+            panelClass: "speech-bubble",
+            image: images.right
         },
         {
             title: "🚀 YOUR MISSION",
             content: "Learn the secrets of cybersecurity and AI ethics. Every correct answer brings us closer to a safer digital world. Are you ready to hack the system ethically?",
             sound: "🎯",
-            panelClass: "manga-panel"
+            panelClass: "manga-panel",
+            image: images.left
         }
     ];
     
@@ -451,6 +495,7 @@ function showComicIntro() {
             <div class="${panel.panelClass}">
                 <div class="comic-sound">${panel.sound}</div>
                 <h2 class="comic-title">${panel.title}</h2>
+                ${panel.image}
                 <p class="comic-text">${panel.content}</p>
                 <button class="button" onclick="nextComicPanel()">${currentPanel === panels.length - 1 ? 'INITIALIZE QUIZ!' : 'NEXT →'}</button>
             </div>
@@ -472,15 +517,21 @@ function nextComicPanel() {
 function loadLanding() {
     const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
     const istTime = getISTTime();
+    const images = getEmbeddedImages('home');
     
     showPanel(`
         <div class="comic-panel">
             <h1 class="title">MANGA-SEC</h1>
+            
+            ${images.left}
+            
             <p class="intro">
                 Welcome to <strong>MANGA-SEC</strong> – a black & white manga comic quiz blending 
                 <strong>cybersecurity</strong> skills with <strong>AI ethics</strong>. 
                 Learn, hack, and sharpen your digital defenses in a comic-style interactive experience.
             </p>
+            
+            ${images.right}
             
             <div class="time-info">
                 <div class="ist-time">🌍 IST Mumbai Time: ${istTime}</div>
@@ -518,6 +569,9 @@ function loadLanding() {
 
 // Badge Gallery
 function showBadgeGallery() {
+    // Update side panels for home-like display
+    // updateSidePanels('home'); // This function is no longer needed
+    
     const allBadges = badges.map(badge => {
         const earned = userProgress.badges.includes(badge.id);
         return `
@@ -599,7 +653,11 @@ function startQuiz(quizIndex, index, score) {
     
     if (index === 0) {
         startTimer();
+        // Get images for quiz mode
+        const images = getEmbeddedImages('quiz');
     }
+    
+    const images = getEmbeddedImages('quiz');
     
     showPanel(`
         <div class="comic-panel">
@@ -607,7 +665,13 @@ function startQuiz(quizIndex, index, score) {
                 <div class="quiz-progress">MISSION PHASE ${index + 1} OF 3</div>
                 <div id="quiz-timer" class="quiz-timer">0:00</div>
             </div>
+            
+            ${images.left}
+            
             <h3 class="question">${q.q}</h3>
+            
+            ${images.right}
+            
             <div class="options">
                 ${q.options.map((opt,i)=>`
                     <button class="button option-btn" onclick="checkAnswer(${quizIndex},${index},${score},${i===q.answer})">${opt}</button>
@@ -651,11 +715,20 @@ function endQuiz(quizIndex, score) {
         date: new Date().toISOString()
     });
     
+    // Get images for results
+    const images = getEmbeddedImages('results');
+    
     if (score === 3) {
         showPanel(`
             <div class="manga-panel">
                 <div class="badge">🏆 ELITE HACKER - ${randomizedTopics[quizIndex].title}</div>
+                
+                ${images.left}
+                
                 <p class="success-text">MISSION ACCOMPLISHED! You've mastered today's cybersecurity challenge!</p>
+                
+                ${images.right}
+                
                 <div class="quiz-stats">
                     <p>⏱️ Time: ${Math.floor(quizTime / 60)}:${(quizTime % 60).toString().padStart(2, '0')}</p>
                     <p>🎯 Score: ${score}/3</p>
@@ -676,7 +749,13 @@ function endQuiz(quizIndex, score) {
         showPanel(`
             <div class="comic-panel">
                 <h2>MISSION STATUS: ${score}/3</h2>
+                
+                ${images.left}
+                
                 <p>Keep learning, cyber warrior! You're getting closer to elite status!</p>
+                
+                ${images.right}
+                
                 <div class="quiz-stats">
                     <p>⏱️ Time: ${Math.floor(quizTime / 60)}:${(quizTime % 60).toString().padStart(2, '0')}</p>
                     <p>🎯 Score: ${score}/3</p>
@@ -870,6 +949,43 @@ function addPanelAnimation() {
             font-weight: bold;
             color: var(--comic-blue);
         }
+
+        /* New styles for embedded images */
+        .image-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .embedded-image {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            transform: scale(1);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .embedded-image:hover {
+            transform: scale(1.05);
+        }
+
+        .image-caption {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.7);
+            color: var(--comic-white);
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.8em;
+            white-space: nowrap;
+            z-index: 10;
+        }
     `;
     document.head.appendChild(style);
 }
@@ -897,6 +1013,9 @@ function getQuizRotationInfo() {
 
 // Show quiz rotation status
 function showQuizStatus() {
+    // Update side panels for home-like display
+    // updateSidePanels('home'); // This function is no longer needed
+    
     const info = getQuizRotationInfo();
     const istTime = getISTTime();
     
@@ -943,6 +1062,9 @@ function showQuizStatus() {
 document.addEventListener('DOMContentLoaded', function() {
     addPanelAnimation();
     loadUserProgress();
+    
+    // Initialize side panels
+    // updateSidePanels('home'); // This function is no longer needed
     
     setTimeout(() => {
         const loading = document.querySelector('.loading-panel');

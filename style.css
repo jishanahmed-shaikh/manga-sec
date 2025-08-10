@@ -126,6 +126,76 @@ body {
     opacity: 0.1;
 }
 
+/* EMBEDDED ANIME IMAGES */
+.embedded-image {
+    display: inline-block;
+    max-width: 200px;
+    height: auto;
+    margin: 20px;
+    border: 4px solid var(--comic-black);
+    border-radius: 0;
+    background: var(--comic-white);
+    box-shadow: 
+        6px 6px 0px var(--comic-black),
+        0 0 0 2px var(--comic-white),
+        0 0 0 6px var(--comic-black);
+    transform: rotate(-3deg);
+    transition: all 0.4s ease;
+    opacity: 1;
+    filter: grayscale(20%);
+}
+
+.embedded-image:hover {
+    transform: rotate(0deg) scale(1.1);
+    box-shadow: 
+        8px 8px 0px var(--comic-black),
+        0 0 0 2px var(--comic-white),
+        0 0 0 8px var(--comic-black);
+    filter: grayscale(0%);
+}
+
+.embedded-image.left {
+    float: left;
+    margin-right: 30px;
+    margin-bottom: 20px;
+}
+
+.embedded-image.right {
+    float: right;
+    margin-left: 30px;
+    margin-bottom: 20px;
+}
+
+.embedded-image.center {
+    display: block;
+    margin: 30px auto;
+    float: none;
+}
+
+.image-caption {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.6em;
+    color: var(--comic-black);
+    text-align: center;
+    margin-top: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+    text-shadow: 1px 1px 0px var(--comic-gray);
+}
+
+.image-container {
+    text-align: center;
+    margin: 30px 0;
+    clear: both;
+}
+
+.image-container::after {
+    content: '';
+    display: table;
+    clear: both;
+}
+
 /* MANGA STYLE PANELS */
 .manga-panel {
     background: var(--comic-white);
@@ -497,7 +567,38 @@ body {
 }
 
 /* RESPONSIVE DESIGN */
+@media (max-width: 1200px) {
+    .comic-page {
+        margin-left: 150px;
+        margin-right: 150px;
+    }
+    
+    .side-image-container {
+        max-width: 130px;
+        padding: 15px;
+    }
+    
+    .side-image-caption {
+        font-size: 0.6em;
+    }
+}
+
 @media (max-width: 768px) {
+    .comic-page {
+        margin-left: 100px;
+        margin-right: 100px;
+    }
+    
+    .side-image-container {
+        max-width: 80px;
+        padding: 10px;
+    }
+    
+    .side-image-caption {
+        font-size: 0.5em;
+        margin-top: 10px;
+    }
+    
     .manga-title {
         font-size: 2.5em;
         letter-spacing: 2px;
@@ -579,6 +680,11 @@ body {
 }
 
 @media (max-width: 480px) {
+    .comic-page {
+        margin-left: 0;
+        margin-right: 0;
+    }
+    
     .comic-container {
         padding: 20px 10px;
     }
@@ -628,6 +734,45 @@ body {
             margin: 15px 0;
             border: 2px solid var(--comic-black);
             font-size: 0.9em;
+        }
+        
+        .status-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+        
+        .status-item {
+            background: var(--comic-white);
+            border: 3px solid var(--comic-black);
+            padding: 20px;
+            text-align: center;
+            box-shadow: 4px 4px 0px var(--comic-black);
+        }
+        
+        .status-label {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 0.8em;
+            color: var(--comic-dark-gray);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .status-value {
+            font-family: 'Bangers', cursive;
+            font-size: 1.4em;
+            color: var(--comic-black);
+            font-weight: bold;
+        }
+        
+        .status-value.available {
+            color: var(--comic-green);
+        }
+        
+        .status-value.locked {
+            color: var(--comic-red);
         }
         
         .time-info {
