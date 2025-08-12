@@ -143,17 +143,46 @@
 
 ## 📱 Screenshots
 
-### 🏠 Landing Page
+### 🏠 Home Page
 
-Coming Soon
+<div align="center">
+<img src="Assets/SS-HomePage1.png" alt="Manga-Sec Home Page - Main Interface" width="800" />
+<p><em>Main home page interface with manga-style design and navigation</em></p>
+</div>
 
-### 🎯 Quiz Interface
+<div align="center">
+<img src="Assets/SS-HomePage2.png" alt="Manga-Sec Home Page - Features Overview" width="800" />
+<p><em>Home page showcasing key features and cybersecurity focus</em></p>
+</div>
 
-Coming Soon
+### 🎯 Quiz Interface & Introduction
 
-### 🏅 Badge Gallery
+<div align="center">
+<img src="Assets/SS-QuizIntro.png" alt="Quiz Introduction - Welcome Screen" width="800" />
+<p><em>Quiz introduction screen with manga-style character and mission briefing</em></p>
+</div>
 
-Coming Soon
+<div align="center">
+<img src="Assets/SS-QuizIntro2.png" alt="Quiz Introduction - Instructions" width="800" />
+<p><em>Detailed quiz instructions and cybersecurity learning objectives</em></p>
+</div>
+
+<div align="center">
+<img src="Assets/SS-QuizIntro3.png" alt="Quiz Introduction - Ready to Start" width="800" />
+<p><em>Final preparation screen before starting the cybersecurity quiz</em></p>
+</div>
+
+### 🏅 Achievements & Badge System
+
+<div align="center">
+<img src="Assets/SS-Achievements1.png" alt="Achievements Page - Progress Tracking" width="800" />
+<p><em>User achievements and progress tracking with manga-themed badges</em></p>
+</div>
+
+<div align="center">
+<img src="Assets/SS-BadgeGallery.png" alt="Badge Gallery - Collection Overview" width="800" />
+<p><em>Complete badge gallery showcasing all available achievements and rewards</em></p>
+</div>
 
 ---
 
