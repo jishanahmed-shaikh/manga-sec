@@ -52,76 +52,104 @@ const quotes = [
 ];
 
 const topics = [
-    { title: "Man-in-the-Middle Attack", desc: "Intercepting communication between two parties.", questions: [
-        { q: "MITM stands for?", options: ["Man in the Middle", "Machine in the Main"], answer: 0 },
-        { q: "A common MITM tool is?", options: ["Wireshark", "Photoshop"], answer: 0 },
-        { q: "MITM targets?", options: ["Network traffic", "Hard drives"], answer: 0 }
-    ]},
-    { title: "Phishing", desc: "Deceptive emails to steal credentials.", questions: [
-        { q: "Phishing often uses?", options: ["Emails", "USB sticks"], answer: 0 },
-        { q: "Phishing goal is?", options: ["Steal info", "Play music"], answer: 0 },
-        { q: "Avoid phishing by?", options: ["Clicking links", "Checking sender"], answer: 1 }
-    ]},
-    { title: "SQL Injection", desc: "Malicious SQL queries to access databases.", questions: [
-        { q: "SQLi exploits?", options: ["Database queries", "Image pixels"], answer: 0 },
-        { q: "Prevent SQLi by?", options: ["Parameterized queries", "Raw input"], answer: 0 },
-        { q: "SQL stands for?", options: ["Structured Query Language", "Secure Query Logic"], answer: 0 }
-    ]},
-    { title: "DDoS Attack", desc: "Overwhelming a service with traffic.", questions: [
-        { q: "DDoS stands for?", options: ["Distributed Denial of Service", "Data Delay of Server"], answer: 0 },
-        { q: "DDoS goal is?", options: ["Crash service", "Clean code"], answer: 0 },
-        { q: "Prevent DDoS with?", options: ["Firewalls", "Music players"], answer: 0 }
-    ]},
-    { title: "Brute Force Attack", desc: "Trying all possible passwords.", questions: [
-        { q: "Brute force targets?", options: ["Passwords", "Emails"], answer: 0 },
-        { q: "Prevent brute force with?", options: ["Strong passwords", "Weak passwords"], answer: 0 },
-        { q: "Brute force is?", options: ["Guessing passwords", "Phishing"], answer: 0 }
-    ]},
-    { title: "Zero-Day Exploit", desc: "Attack before a fix is released.", questions: [
-        { q: "Zero-day targets?", options: ["Unpatched flaws", "Old movies"], answer: 0 },
-        { q: "Prevent zero-day by?", options: ["Updating software", "Ignoring patches"], answer: 0 },
-        { q: "Hackers love zero-days?", options: ["Yes", "No"], answer: 0 }
-    ]},
-    { title: "Social Engineering", desc: "Manipulating people to give information.", questions: [
-        { q: "Social engineering uses?", options: ["Psychology", "Math"], answer: 0 },
-        { q: "Prevent it by?", options: ["Awareness", "Trusting strangers"], answer: 0 },
-        { q: "Common example?", options: ["Phishing", "Programming"], answer: 0 }
-    ]},
-    { title: "Ransomware", desc: "Encrypts data for ransom.", questions: [
-        { q: "Ransomware demands?", options: ["Money", "Free hugs"], answer: 0 },
-        { q: "Prevent ransomware by?", options: ["Backups", "Ignoring updates"], answer: 0 },
-        { q: "Ransomware encrypts?", options: ["Files", "Screens"], answer: 0 }
-    ]},
-    { title: "Trojan Horse", desc: "Malware disguised as legitimate software.", questions: [
-        { q: "Named after?", options: ["Greek myth", "Virus"], answer: 0 },
-        { q: "Trojan hides?", options: ["Malware", "Music"], answer: 0 },
-        { q: "Prevent trojans by?", options: ["Trusted downloads", "Random links"], answer: 0 }
-    ]},
-    { title: "Spyware", desc: "Secretly monitors user activity.", questions: [
-        { q: "Spyware collects?", options: ["Data", "Cookies"], answer: 0 },
-        { q: "Prevent spyware with?", options: ["Antivirus", "Random installs"], answer: 0 },
-        { q: "Spyware is legal?", options: ["No", "Yes"], answer: 0 }
-    ]},
-    { title: "Keylogger", desc: "Records keystrokes to steal data.", questions: [
-        { q: "Keylogger steals?", options: ["Passwords", "Weather"], answer: 0 },
-        { q: "Prevent it by?", options: ["Antivirus", "Ignore"], answer: 0 },
-        { q: "Keylogger type?", options: ["Hardware & Software", "Music & Video"], answer: 0 }
-    ]},
-    { title: "Session Hijacking", desc: "Stealing a user session token.", questions: [
-        { q: "Session hijacking steals?", options: ["Session token", "Shoes"], answer: 0 },
-        { q: "Prevent by?", options: ["HTTPS", "HTTP"], answer: 0 },
-        { q: "Cookies store?", options: ["Session data", "Bread"], answer: 0 }
-    ]},
-    { title: "Cryptojacking", desc: "Using your computer to mine crypto.", questions: [
-        { q: "Cryptojacking mines?", options: ["Cryptocurrency", "Gold"], answer: 0 },
-        { q: "Prevent by?", options: ["Anti-mining tools", "Ignoring"], answer: 0 },
-        { q: "Cryptojacking slows?", options: ["Computer", "Internet only"], answer: 0 }
-    ]},
-    { title: "AI Bias", desc: "Unfair outcomes in AI models.", questions: [
-        { q: "Bias in AI is?", options: ["Systematic error", "Random"], answer: 0 },
-        { q: "Prevent by?", options: ["Diverse data", "Ignoring diversity"], answer: 0 },
-        { q: "AI ethics important?", options: ["Yes", "No"], answer: 0 }
-    ]}
+    {
+        title: "Man-in-the-Middle Attack", desc: "Intercepting communication between two parties.", questions: [
+            { q: "MITM stands for?", options: ["Man in the Middle", "Machine in the Main"], answer: 0 },
+            { q: "A common MITM tool is?", options: ["Wireshark", "Photoshop"], answer: 0 },
+            { q: "MITM targets?", options: ["Network traffic", "Hard drives"], answer: 0 }
+        ]
+    },
+    {
+        title: "Phishing", desc: "Deceptive emails to steal credentials.", questions: [
+            { q: "Phishing often uses?", options: ["Emails", "USB sticks"], answer: 0 },
+            { q: "Phishing goal is?", options: ["Steal info", "Play music"], answer: 0 },
+            { q: "Avoid phishing by?", options: ["Clicking links", "Checking sender"], answer: 1 }
+        ]
+    },
+    {
+        title: "SQL Injection", desc: "Malicious SQL queries to access databases.", questions: [
+            { q: "SQLi exploits?", options: ["Database queries", "Image pixels"], answer: 0 },
+            { q: "Prevent SQLi by?", options: ["Parameterized queries", "Raw input"], answer: 0 },
+            { q: "SQL stands for?", options: ["Structured Query Language", "Secure Query Logic"], answer: 0 }
+        ]
+    },
+    {
+        title: "DDoS Attack", desc: "Overwhelming a service with traffic.", questions: [
+            { q: "DDoS stands for?", options: ["Distributed Denial of Service", "Data Delay of Server"], answer: 0 },
+            { q: "DDoS goal is?", options: ["Crash service", "Clean code"], answer: 0 },
+            { q: "Prevent DDoS with?", options: ["Firewalls", "Music players"], answer: 0 }
+        ]
+    },
+    {
+        title: "Brute Force Attack", desc: "Trying all possible passwords.", questions: [
+            { q: "Brute force targets?", options: ["Passwords", "Emails"], answer: 0 },
+            { q: "Prevent brute force with?", options: ["Strong passwords", "Weak passwords"], answer: 0 },
+            { q: "Brute force is?", options: ["Guessing passwords", "Phishing"], answer: 0 }
+        ]
+    },
+    {
+        title: "Zero-Day Exploit", desc: "Attack before a fix is released.", questions: [
+            { q: "Zero-day targets?", options: ["Unpatched flaws", "Old movies"], answer: 0 },
+            { q: "Prevent zero-day by?", options: ["Updating software", "Ignoring patches"], answer: 0 },
+            { q: "Hackers love zero-days?", options: ["Yes", "No"], answer: 0 }
+        ]
+    },
+    {
+        title: "Social Engineering", desc: "Manipulating people to give information.", questions: [
+            { q: "Social engineering uses?", options: ["Psychology", "Math"], answer: 0 },
+            { q: "Prevent it by?", options: ["Awareness", "Trusting strangers"], answer: 0 },
+            { q: "Common example?", options: ["Phishing", "Programming"], answer: 0 }
+        ]
+    },
+    {
+        title: "Ransomware", desc: "Encrypts data for ransom.", questions: [
+            { q: "Ransomware demands?", options: ["Money", "Free hugs"], answer: 0 },
+            { q: "Prevent ransomware by?", options: ["Backups", "Ignoring updates"], answer: 0 },
+            { q: "Ransomware encrypts?", options: ["Files", "Screens"], answer: 0 }
+        ]
+    },
+    {
+        title: "Trojan Horse", desc: "Malware disguised as legitimate software.", questions: [
+            { q: "Named after?", options: ["Greek myth", "Virus"], answer: 0 },
+            { q: "Trojan hides?", options: ["Malware", "Music"], answer: 0 },
+            { q: "Prevent trojans by?", options: ["Trusted downloads", "Random links"], answer: 0 }
+        ]
+    },
+    {
+        title: "Spyware", desc: "Secretly monitors user activity.", questions: [
+            { q: "Spyware collects?", options: ["Data", "Cookies"], answer: 0 },
+            { q: "Prevent spyware with?", options: ["Antivirus", "Random installs"], answer: 0 },
+            { q: "Spyware is legal?", options: ["No", "Yes"], answer: 0 }
+        ]
+    },
+    {
+        title: "Keylogger", desc: "Records keystrokes to steal data.", questions: [
+            { q: "Keylogger steals?", options: ["Passwords", "Weather"], answer: 0 },
+            { q: "Prevent it by?", options: ["Antivirus", "Ignore"], answer: 0 },
+            { q: "Keylogger type?", options: ["Hardware & Software", "Music & Video"], answer: 0 }
+        ]
+    },
+    {
+        title: "Session Hijacking", desc: "Stealing a user session token.", questions: [
+            { q: "Session hijacking steals?", options: ["Session token", "Shoes"], answer: 0 },
+            { q: "Prevent by?", options: ["HTTPS", "HTTP"], answer: 0 },
+            { q: "Cookies store?", options: ["Session data", "Bread"], answer: 0 }
+        ]
+    },
+    {
+        title: "Cryptojacking", desc: "Using your computer to mine crypto.", questions: [
+            { q: "Cryptojacking mines?", options: ["Cryptocurrency", "Gold"], answer: 0 },
+            { q: "Prevent by?", options: ["Anti-mining tools", "Ignoring"], answer: 0 },
+            { q: "Cryptojacking slows?", options: ["Computer", "Internet only"], answer: 0 }
+        ]
+    },
+    {
+        title: "AI Bias", desc: "Unfair outcomes in AI models.", questions: [
+            { q: "Bias in AI is?", options: ["Systematic error", "Random"], answer: 0 },
+            { q: "Prevent by?", options: ["Diverse data", "Ignoring diversity"], answer: 0 },
+            { q: "AI ethics important?", options: ["Yes", "No"], answer: 0 }
+        ]
+    }
 ];
 
 // Badge system for achievements
@@ -237,12 +265,12 @@ const sounds = {
     click: () => {
         const audio = new Audio();
         audio.src = 'data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBSuBzvLZiTYIG2m98OScTgwOUarm7blmGgU7k9n1unEiBC13yO/eizEIHWq+8+OWT';
-        audio.play().catch(() => {}); // Ignore errors if audio fails
+        audio.play().catch(() => { }); // Ignore errors if audio fails
     },
     success: () => {
         const audio = new Audio();
         audio.src = 'data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBSuBzvLZiTYIG2m98OScTgwOUarm7blmGgU7k9n1unEiBC13yO/eizEIHWq+8+OWT';
-        audio.play().catch(() => {});
+        audio.play().catch(() => { });
     }
 };
 
@@ -268,11 +296,11 @@ function canUserTakeQuiz() {
     const quizIndex = getCurrentQuizIndex();
     const lastAttempt = localStorage.getItem(`quiz-attempt-${quizIndex}`);
     if (!lastAttempt) return true;
-    
+
     const lastAttemptTime = parseInt(lastAttempt);
     const now = Date.now();
     const hoursSinceAttempt = (now - lastAttemptTime) / (1000 * 60 * 60);
-    
+
     return hoursSinceAttempt >= QUIZ_ROTATION_HOURS;
 }
 
@@ -297,12 +325,12 @@ function stopTimer() {
 function updateTimer() {
     const timerElement = document.getElementById('quiz-timer');
     if (!timerElement) return;
-    
+
     const elapsed = Date.now() - quizStartTime;
     const seconds = Math.floor(elapsed / 1000);
     const minutes = Math.floor(seconds / 60);
     const remainingSeconds = seconds % 60;
-    
+
     timerElement.textContent = `${minutes}:${remainingSeconds.toString().padStart(2, '0')}`;
 }
 
@@ -326,20 +354,20 @@ function stopCountdownTimer() {
 function updateCountdown() {
     const countdownElement = document.getElementById('next-quiz-countdown');
     if (!countdownElement) return;
-    
+
     const quizIndex = getCurrentQuizIndex();
     const lastAttempt = localStorage.getItem(`quiz-attempt-${quizIndex}`);
-    
+
     if (lastAttempt) {
         const lastAttemptTime = parseInt(lastAttempt);
         const nextQuizTime = lastAttemptTime + (QUIZ_ROTATION_HOURS * 60 * 60 * 1000);
         const timeUntilNext = nextQuizTime - Date.now();
-        
+
         if (timeUntilNext > 0) {
             const hours = Math.floor(timeUntilNext / (1000 * 60 * 60));
             const minutes = Math.floor((timeUntilNext % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((timeUntilNext % (1000 * 60)) / 1000);
-            
+
             countdownElement.innerHTML = `
                 <div class="countdown-timer">
                     <div class="countdown-label">⏰ NEXT QUIZ IN:</div>
@@ -366,7 +394,7 @@ function updateCountdown() {
 function getISTTime() {
     const now = new Date();
     const istTime = new Date(now.getTime() + (5.5 * 60 * 60 * 1000)); // UTC+5:30
-    return istTime.toLocaleString('en-IN', { 
+    return istTime.toLocaleString('en-IN', {
         timeZone: 'Asia/Kolkata',
         hour12: false,
         year: 'numeric',
@@ -381,35 +409,35 @@ function getISTTime() {
 // Badge system
 function checkAndAwardBadges(score, time) {
     const newBadges = [];
-    
+
     // First quiz badge
     if (userProgress.totalQuizzes === 1 && !userProgress.badges.includes('first_quiz')) {
         newBadges.push('first_quiz');
     }
-    
+
     // Perfect score badge
     if (score === 3 && !userProgress.badges.includes('perfect_score')) {
         newBadges.push('perfect_score');
         userProgress.perfectScores++;
     }
-    
+
     // Speed demon badge
     if (time < 30 && !userProgress.badges.includes('speed_demon')) {
         newBadges.push('speed_demon');
     }
-    
+
     // Night owl badge
     const hour = new Date().getHours();
     if ((hour >= 22 || hour <= 6) && !userProgress.badges.includes('night_owl')) {
         newBadges.push('night_owl');
     }
-    
+
     // Weekend warrior badge
     const day = new Date().getDay();
     if ((day === 0 || day === 6) && !userProgress.badges.includes('weekend_warrior')) {
         newBadges.push('weekend_warrior');
     }
-    
+
     // Streak badges
     if (score === 3) {
         userProgress.currentStreak++;
@@ -425,11 +453,11 @@ function checkAndAwardBadges(score, time) {
     } else {
         userProgress.currentStreak = 0;
     }
-    
+
     // Add new badges
     userProgress.badges.push(...newBadges);
     saveUserProgress();
-    
+
     return newBadges;
 }
 
@@ -447,13 +475,13 @@ function loadUserProgress() {
 // Panel Transition with comic animations
 function showPanel(html, panelType = 'comic-panel') {
     if (!app) return;
-    
+
     // Stop countdown timer if it's running
     stopCountdownTimer();
-    
+
     sounds.click();
     app.innerHTML = html;
-    
+
     // Add manga-style impact effect
     const panel = app.querySelector('.comic-panel, .manga-panel, .speech-bubble');
     if (panel) {
@@ -464,7 +492,7 @@ function showPanel(html, panelType = 'comic-panel') {
 // 3-Panel Comic Intro with Manga Theme
 function showComicIntro() {
     const images = getEmbeddedImages('intro');
-    
+
     const panels = [
         {
             title: "🌐 THE DIGITAL FRONTIER",
@@ -488,7 +516,7 @@ function showComicIntro() {
             image: images.left
         }
     ];
-    
+
     if (currentPanel < panels.length) {
         const panel = panels[currentPanel];
         showPanel(`
@@ -518,7 +546,7 @@ function loadLanding() {
     const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
     const istTime = getISTTime();
     const images = getEmbeddedImages('home');
-    
+
     showPanel(`
         <div class="comic-panel">
             <h1 class="title">MANGA-SEC</h1>
@@ -546,9 +574,9 @@ function loadLanding() {
                 <h3 class="comic-title">🏆 YOUR ACHIEVEMENTS</h3>
                 <div class="badge-grid">
                     ${userProgress.badges.map(badgeId => {
-                        const badge = badges.find(b => b.id === badgeId);
-                        return badge ? `<div class="badge-item">${badge.icon} ${badge.name}</div>` : '';
-                    }).join('')}
+        const badge = badges.find(b => b.id === badgeId);
+        return badge ? `<div class="badge-item">${badge.icon} ${badge.name}</div>` : '';
+    }).join('')}
                 </div>
                 <div class="stats">
                     <p>📊 Total Quizzes: ${userProgress.totalQuizzes}</p>
@@ -564,7 +592,7 @@ function loadLanding() {
             <button class="button" onclick="installPWA()" id="install-btn" style="display: none;">📱 INSTALL APP</button>
         </div>
     `);
-    
+
     // Start countdown timer
     startCountdownTimer();
 }
@@ -573,7 +601,7 @@ function loadLanding() {
 function showBadgeGallery() {
     // Update side panels for home-like display
     // updateSidePanels('home'); // This function is no longer needed
-    
+
     const allBadges = badges.map(badge => {
         const earned = userProgress.badges.includes(badge.id);
         return `
@@ -585,7 +613,7 @@ function showBadgeGallery() {
             </div>
         `;
     }).join('');
-    
+
     showPanel(`
         <div class="manga-panel">
             <h2 class="comic-title">🏅 BADGE GALLERY</h2>
@@ -601,13 +629,13 @@ function showBadgeGallery() {
 function startTopic() {
     const quizIndex = getCurrentQuizIndex();
     const topic = randomizedTopics[quizIndex];
-    
+
     if (!canUserTakeQuiz()) {
         const nextQuizTime = new Date(parseInt(localStorage.getItem(`quiz-attempt-${quizIndex}`)) + (QUIZ_ROTATION_HOURS * 60 * 60 * 1000));
         const timeUntilNext = nextQuizTime - Date.now();
         const hours = Math.floor(timeUntilNext / (1000 * 60 * 60));
         const minutes = Math.floor((timeUntilNext % (1000 * 60 * 60)) / (1000 * 60));
-        
+
         showPanel(`
             <div class="manga-panel">
                 <h2>⏰ QUIZ COOLDOWN ACTIVE</h2>
@@ -621,7 +649,7 @@ function startTopic() {
         `);
         return;
     }
-    
+
     showPanel(`
         <div class="speech-bubble">
             <h2>MISSION BRIEF: ${topic.title}</h2>
@@ -652,15 +680,15 @@ function confirmStart(quizIndex) {
 // Quiz Logic with Manga Elements
 function startQuiz(quizIndex, index, score) {
     const q = randomizedTopics[quizIndex].questions[index];
-    
+
     if (index === 0) {
         startTimer();
         // Get images for quiz mode
         const images = getEmbeddedImages('quiz');
     }
-    
+
     const images = getEmbeddedImages('quiz');
-    
+
     showPanel(`
         <div class="comic-panel">
             <div class="quiz-header">
@@ -675,8 +703,8 @@ function startQuiz(quizIndex, index, score) {
             ${images.right}
             
             <div class="options">
-                ${q.options.map((opt,i)=>`
-                    <button class="button option-btn" onclick="checkAnswer(${quizIndex},${index},${score},${i===q.answer})">${opt}</button>
+                ${q.options.map((opt, i) => `
+                    <button class="button option-btn" onclick="checkAnswer(${quizIndex},${index},${score},${i === q.answer})">${opt}</button>
                 `).join('')}
             </div>
         </div>
@@ -688,8 +716,8 @@ function checkAnswer(quizIndex, index, score, correct) {
         score++;
         sounds.success();
     }
-    if (index+1 < randomizedTopics[quizIndex].questions.length) {
-        startQuiz(quizIndex, index+1, score);
+    if (index + 1 < randomizedTopics[quizIndex].questions.length) {
+        startQuiz(quizIndex, index + 1, score);
     } else {
         endQuiz(quizIndex, score);
     }
@@ -699,16 +727,16 @@ function checkAnswer(quizIndex, index, score, correct) {
 function endQuiz(quizIndex, score) {
     stopTimer();
     const quizTime = getQuizTime();
-    
+
     // Mark quiz as completed
     markQuizAttempt();
-    
+
     // Update user progress
     userProgress.totalQuizzes++;
-    
+
     // Check for new badges
     const newBadges = checkAndAwardBadges(score, quizTime);
-    
+
     // Add to quiz history
     userProgress.quizHistory.push({
         topic: randomizedTopics[quizIndex].title,
@@ -716,10 +744,10 @@ function endQuiz(quizIndex, score) {
         time: quizTime,
         date: new Date().toISOString()
     });
-    
+
     // Get images for results
     const images = getEmbeddedImages('results');
-    
+
     if (score === 3) {
         showPanel(`
             <div class="manga-panel">
@@ -739,9 +767,9 @@ function endQuiz(quizIndex, score) {
                     <div class="new-badges">
                         <h4>🎉 NEW BADGES EARNED!</h4>
                         ${newBadges.map(badgeId => {
-                            const badge = badges.find(b => b.id === badgeId);
-                            return badge ? `<div class="new-badge">${badge.icon} ${badge.name}</div>` : '';
-                        }).join('')}
+            const badge = badges.find(b => b.id === badgeId);
+            return badge ? `<div class="new-badge">${badge.icon} ${badge.name}</div>` : '';
+        }).join('')}
                     </div>
                 ` : ''}
                 <button class="button" onclick="loadLanding()">🏠 MAINFRAME</button>
@@ -766,9 +794,9 @@ function endQuiz(quizIndex, score) {
                     <div class="new-badges">
                         <h4>🎉 NEW BADGES EARNED!</h4>
                         ${newBadges.map(badgeId => {
-                            const badge = badges.find(b => b.id === badgeId);
-                            return badge ? `<div class="new-badge">${badge.icon} ${badge.name}</div>` : '';
-                        }).join('')}
+            const badge = badges.find(b => b.id === badgeId);
+            return badge ? `<div class="new-badge">${badge.icon} ${badge.name}</div>` : '';
+        }).join('')}
                     </div>
                 ` : ''}
                 <button class="button" onclick="loadLanding()">🏠 MAINFRAME</button>
@@ -1000,10 +1028,10 @@ function getQuizRotationInfo() {
     const hoursSinceEpoch = Math.floor(now / (1000 * 60 * 60));
     const nextRotation = (Math.floor(hoursSinceEpoch / QUIZ_ROTATION_HOURS) + 1) * QUIZ_ROTATION_HOURS;
     const timeUntilNextRotation = (nextRotation - hoursSinceEpoch) * 60 * 60 * 1000;
-    
+
     const hours = Math.floor(timeUntilNextRotation / (1000 * 60 * 60));
     const minutes = Math.floor((timeUntilNextRotation % (1000 * 60 * 60)) / (1000 * 60));
-    
+
     return {
         currentTopic: topic.title,
         currentIndex: quizIndex,
@@ -1017,10 +1045,10 @@ function getQuizRotationInfo() {
 function showQuizStatus() {
     // Update side panels for home-like display
     // updateSidePanels('home'); // This function is no longer needed
-    
+
     const info = getQuizRotationInfo();
     const istTime = getISTTime();
-    
+
     showPanel(`
         <div class="manga-panel">
             <h2 class="comic-title">📊 QUIZ ROTATION STATUS</h2>
@@ -1060,28 +1088,13 @@ function showQuizStatus() {
     `);
 }
 
-// Initialize everything when page loads
-document.addEventListener('DOMContentLoaded', function() {
-    addPanelAnimation();
-    loadUserProgress();
-    
-    // Initialize side panels
-    // updateSidePanels('home'); // This function is no longer needed
-    
-    setTimeout(() => {
-        const loading = document.querySelector('.loading-panel');
-        if (loading) {
-            loading.style.display = 'none';
-            loadLanding();
-        }
-    }, 2000);
-});
-// Sett
-ings Panel
+// Initialization handled by window.addEventListener('load') below
+
+// Settings Panel
 function showSettings() {
     const currentTheme = window.themeManager ? window.themeManager.getCurrentTheme() : 'light';
     const soundEnabled = window.soundEffects ? window.soundEffects.enabled : true;
-    
+
     showPanel(`
         <div class="manga-panel">
             <h2 class="comic-title">⚙️ SETTINGS PANEL</h2>
@@ -1171,7 +1184,7 @@ function exportData() {
         },
         timestamp: new Date().toISOString()
     };
-    
+
     const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
@@ -1179,7 +1192,7 @@ function exportData() {
     a.download = `manga-sec-backup-${new Date().toISOString().split('T')[0]}.json`;
     a.click();
     URL.revokeObjectURL(url);
-    
+
     if (window.notifications) {
         window.notifications.show('Data exported successfully!', 'success');
     }
@@ -1239,7 +1252,7 @@ function showQuizStatus() {
     const canTake = canUserTakeQuiz();
     const nextQuizTime = getNextQuizTime();
     const currentTopic = randomizedTopics[quizIndex];
-    
+
     showPanel(`
         <div class="manga-panel">
             <h2 class="comic-title">📊 QUIZ STATUS DASHBOARD</h2>
@@ -1309,7 +1322,7 @@ function showQuizStatus() {
             </div>
         </div>
     `);
-    
+
     // Start countdown if quiz is locked
     if (!canTake) {
         startCountdownTimer();
@@ -1319,18 +1332,18 @@ function showQuizStatus() {
 function getNextQuizTime() {
     const quizIndex = getCurrentQuizIndex();
     const lastAttempt = localStorage.getItem(`quiz-attempt-${quizIndex}`);
-    
+
     if (!lastAttempt) return 'NOW';
-    
+
     const lastAttemptTime = parseInt(lastAttempt);
     const nextQuizTime = lastAttemptTime + (QUIZ_ROTATION_HOURS * 60 * 60 * 1000);
     const timeUntilNext = nextQuizTime - Date.now();
-    
+
     if (timeUntilNext <= 0) return 'NOW';
-    
+
     const hours = Math.floor(timeUntilNext / (1000 * 60 * 60));
     const minutes = Math.floor((timeUntilNext % (1000 * 60 * 60)) / (1000 * 60));
-    
+
     return `${hours}h ${minutes}m`;
 }
 
@@ -1338,7 +1351,7 @@ function getRecentHistory() {
     if (!userProgress.quizHistory || userProgress.quizHistory.length === 0) {
         return '<p class="no-history">No quiz history yet. Take your first quiz!</p>';
     }
-    
+
     const recent = userProgress.quizHistory.slice(-5).reverse();
     return recent.map(quiz => `
         <div class="history-item">
@@ -1356,12 +1369,12 @@ function getRecentHistory() {
 function trackQuizCompletion(score, time, topic) {
     // Update basic stats
     userProgress.totalQuizzes++;
-    
+
     // Track perfect scores
     if (score === 3) {
         userProgress.perfectScores++;
         userProgress.currentStreak++;
-        
+
         // Create particle effect for perfect score
         if (window.particleSystem) {
             const centerX = window.innerWidth / 2;
@@ -1371,12 +1384,12 @@ function trackQuizCompletion(score, time, topic) {
     } else {
         userProgress.currentStreak = 0;
     }
-    
+
     // Update best streak
     if (userProgress.currentStreak > userProgress.bestStreak) {
         userProgress.bestStreak = userProgress.currentStreak;
     }
-    
+
     // Add to history
     userProgress.quizHistory.push({
         topic: topic,
@@ -1385,15 +1398,15 @@ function trackQuizCompletion(score, time, topic) {
         date: new Date().toISOString(),
         perfect: score === 3
     });
-    
+
     // Keep only last 50 entries
     if (userProgress.quizHistory.length > 50) {
         userProgress.quizHistory = userProgress.quizHistory.slice(-50);
     }
-    
+
     // Check for new badges
     const newBadges = checkAndAwardBadges(score, time);
-    
+
     // Show badge notifications
     if (newBadges.length > 0) {
         newBadges.forEach((badgeId, index) => {
@@ -1412,7 +1425,7 @@ function trackQuizCompletion(score, time, topic) {
             }
         });
     }
-    
+
     saveUserProgress();
     return newBadges;
 }
@@ -1421,13 +1434,13 @@ function trackQuizCompletion(score, time, topic) {
 function completeQuiz(quizIndex, score) {
     const quizTime = getQuizTime();
     const topic = randomizedTopics[quizIndex].title;
-    
+
     // Track completion
     const newBadges = trackQuizCompletion(score, quizTime, topic);
-    
+
     // Mark quiz as attempted
     markQuizAttempt();
-    
+
     // Show results with enhanced feedback
     showQuizResults(score, quizTime, topic, newBadges);
 }
@@ -1435,10 +1448,10 @@ function completeQuiz(quizIndex, score) {
 function showQuizResults(score, time, topic, newBadges) {
     const percentage = Math.round((score / 3) * 100);
     const timeFormatted = `${Math.floor(time / 60)}:${(time % 60).toString().padStart(2, '0')}`;
-    
+
     let resultMessage = '';
     let resultClass = '';
-    
+
     if (score === 3) {
         resultMessage = 'PERFECT! ELITE HACKER STATUS ACHIEVED!';
         resultClass = 'perfect';
@@ -1452,7 +1465,7 @@ function showQuizResults(score, time, topic, newBadges) {
         resultMessage = 'STUDY MORE! KNOWLEDGE IS POWER!';
         resultClass = 'needs-work';
     }
-    
+
     showPanel(`
         <div class="manga-panel">
             <div class="result-header ${resultClass}">
@@ -1483,14 +1496,14 @@ function showQuizResults(score, time, topic, newBadges) {
                     <h3 class="comic-title">🎉 NEW BADGES EARNED!</h3>
                     <div class="new-badges-grid">
                         ${newBadges.map(badgeId => {
-                            const badge = badges.find(b => b.id === badgeId);
-                            return badge ? `
+        const badge = badges.find(b => b.id === badgeId);
+        return badge ? `
                                 <div class="new-badge-item">
                                     <div class="badge-icon">${badge.icon}</div>
                                     <div class="badge-name">${badge.name}</div>
                                 </div>
                             ` : '';
-                        }).join('')}
+    }).join('')}
                     </div>
                 </div>
             ` : ''}
@@ -1526,7 +1539,7 @@ function checkAnswer(quizIndex, index, score, correct) {
             window.soundEffects.play('error');
         }
     }
-    
+
     if (index + 1 < randomizedTopics[quizIndex].questions.length) {
         startQuiz(quizIndex, index + 1, score);
     } else {
@@ -1535,7 +1548,7 @@ function checkAnswer(quizIndex, index, score, correct) {
 }
 
 // Initialize systems on load
-window.addEventListener('load', function() {
+window.addEventListener('load', function () {
     // Initialize all systems
     window.soundEffects = new SoundEffects();
     window.notifications = new NotificationSystem();
@@ -1545,26 +1558,35 @@ window.addEventListener('load', function() {
     window.analytics = new Analytics();
     window.accessibility = new AccessibilityManager();
     window.router = new Router();
-    
+
     // Load user progress
     loadUserProgress();
     
+    // Add panel animations
+    addPanelAnimation();
+
     // Track initial page load
     if (window.analytics) {
         window.analytics.trackPageView('home');
     }
-    
-    // Show welcome for new users
-    if (userProgress.totalQuizzes === 0) {
-        setTimeout(() => {
-            if (window.notifications) {
-                window.notifications.show('🎉 Welcome to MANGA-SEC!', 'success', 4000);
-            }
-        }, 2000);
-    }
-    
-    // Start the app
-    setTimeout(loadLanding, 1000);
+
+    // Hide loading screen and start app
+    setTimeout(() => {
+        const loading = document.querySelector('.loading-panel');
+        if (loading) {
+            loading.style.display = 'none';
+        }
+        loadLanding();
+        
+        // Show welcome for new users
+        if (userProgress.totalQuizzes === 0) {
+            setTimeout(() => {
+                if (window.notifications) {
+                    window.notifications.show('🎉 Welcome to MANGA-SEC!', 'success', 4000);
+                }
+            }, 1000);
+        }
+    }, 2000);
 });
 
 // PWA Service Worker Registration
@@ -1573,7 +1595,7 @@ if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('/sw.js')
             .then((registration) => {
                 console.log('MANGA-SEC: SW registered', registration);
-                
+
                 // Check for updates
                 registration.addEventListener('updatefound', () => {
                     const newWorker = registration.installing;
@@ -1597,13 +1619,13 @@ let deferredPrompt;
 window.addEventListener('beforeinstallprompt', (e) => {
     e.preventDefault();
     deferredPrompt = e;
-    
+
     // Show install button
     const installBtn = document.getElementById('install-btn');
     if (installBtn) {
         installBtn.style.display = 'inline-block';
     }
-    
+
     setTimeout(() => {
         if (window.notifications) {
             window.notifications.show('📱 Install MANGA-SEC as an app for better experience!', 'info', 6000);
