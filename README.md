@@ -1,7 +1,7 @@
 <div align="center">
 
 # 🎭 MANGA-SEC: Cybersecurity Adventures
-<img src="Manga-Sec-Logo.png" alt="Manga-Sec Logo" width="300" height="350" />
+<img src="Assets/Manga-Sec-Logo.png" alt="Manga-Sec Logo" width="300" height="350" />
 </div>
 
 <div align="center">
@@ -654,5 +654,6 @@ SOFTWARE.
 *Empowering Ethical Considertations of AI via Cybersecurity Education through Manga-Style Adventures*
 
 </div>
+
 
 
