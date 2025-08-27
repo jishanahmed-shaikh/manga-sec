@@ -1350,33 +1350,7 @@ function getRecentHistory() {
             <div class="history-date">${new Date(quiz.date).toLocaleDateString()}</div>
         </div>
     `).join('');
-}// Initi
-alize all systems when page loads
-document.addEventListener('DOMContentLoaded', function() {
-    // Initialize core systems
-    window.soundEffects = new SoundEffects();
-    window.notifications = new NotificationSystem();
-    window.themeManager = new ThemeManager();
-    window.particleSystem = new ParticleSystem();
-    window.keyboardShortcuts = new KeyboardShortcuts();
-    
-    // Load user progress
-    loadUserProgress();
-    
-    // Show welcome message for new users
-    if (userProgress.totalQuizzes === 0) {
-        setTimeout(() => {
-            if (window.notifications) {
-                window.notifications.show('🎉 Welcome to MANGA-SEC! Start your cybersecurity journey!', 'success', 4000);
-            }
-        }, 2000);
-    }
-    
-    // Initialize the app
-    setTimeout(() => {
-        loadLanding();
-    }, 1000);
-});
+}
 
 // Enhanced progress tracking
 function trackQuizCompletion(score, time, topic) {
@@ -1528,8 +1502,9 @@ function showQuizResults(score, time, topic, newBadges) {
             </div>
         </div>
     `);
-}// Up
-date existing functions to use new systems
+}
+
+// Update existing functions to use new systems
 function checkAnswer(quizIndex, index, score, correct) {
     if (correct) {
         score++;
@@ -1590,8 +1565,9 @@ window.addEventListener('load', function() {
     
     // Start the app
     setTimeout(loadLanding, 1000);
-});/
-/ PWA Service Worker Registration
+});
+
+// PWA Service Worker Registration
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
         navigator.serviceWorker.register('/sw.js')
@@ -1645,8 +1621,9 @@ function installPWA() {
             deferredPrompt = null;
         });
     }
-}// En
-hanced accessibility functions
+}
+
+// Enhanced accessibility functions
 function toggleHighContrast() {
     if (window.accessibility) {
         const enabled = window.accessibility.toggleHighContrast();
