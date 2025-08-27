@@ -179,20 +179,20 @@ const mangaArtwork = [
 // Side panel image configuration for different pages/sections
 const embeddedImages = {
     home: {
-        left: { src: '4Grid-1.png', caption: 'CYBER WARRIOR', position: 'left' },
-        right: { src: 'ActionPush.png', caption: 'ACTION HERO', position: 'right' }
+        left: { src: 'Assets/4Grid-1.png', caption: 'CYBER WARRIOR', position: 'left' },
+        right: { src: 'Assets/ActionPush.png', caption: 'ACTION HERO', position: 'right' }
     },
     intro: {
-        left: { src: 'Pose1-Stop.png', caption: 'STOP & THINK', position: 'left' },
-        right: { src: 'Pose2-Laptop.png', caption: 'DIGITAL DEFENDER', position: 'right' }
+        left: { src: 'Assets/Pose1-Stop.png', caption: 'STOP & THINK', position: 'left' },
+        right: { src: 'Assets/Pose2-Laptop.png', caption: 'DIGITAL DEFENDER', position: 'right' }
     },
     quiz: {
-        left: { src: 'ActionPush.png', caption: 'PUSH FORWARD', position: 'left' },
-        right: { src: '4Grid-1.png', caption: 'GRID MASTER', position: 'right' }
+        left: { src: 'Assets/ActionPush.png', caption: 'PUSH FORWARD', position: 'left' },
+        right: { src: 'Assets/4Grid-1.png', caption: 'GRID MASTER', position: 'right' }
     },
     results: {
-        left: { src: 'Pose2-Laptop.png', caption: 'VICTORY POSE', position: 'left' },
-        right: { src: 'Pose1-Stop.png', caption: 'MISSION COMPLETE', position: 'right' }
+        left: { src: 'Assets/Pose2-Laptop.png', caption: 'VICTORY POSE', position: 'left' },
+        right: { src: 'Assets/Pose1-Stop.png', caption: 'MISSION COMPLETE', position: 'right' }
     }
 };
 
@@ -200,7 +200,11 @@ const embeddedImages = {
 function createEmbeddedImage(imageConfig) {
     return `
         <div class="image-container">
-            <img src="${imageConfig.src}" alt="${imageConfig.caption}" class="embedded-image ${imageConfig.position}">
+            <img src="${imageConfig.src}" 
+                 alt="${imageConfig.caption}" 
+                 class="embedded-image ${imageConfig.position}"
+                 onerror="this.style.display='none'; console.log('Image failed to load: ${imageConfig.src}');"
+                 onload="this.style.opacity='1';">
             <div class="image-caption">${imageConfig.caption}</div>
         </div>
     `;
