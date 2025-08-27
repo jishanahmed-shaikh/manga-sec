@@ -711,17 +711,7 @@ function startQuiz(quizIndex, index, score) {
     `);
 }
 
-function checkAnswer(quizIndex, index, score, correct) {
-    if (correct) {
-        score++;
-        sounds.success();
-    }
-    if (index + 1 < randomizedTopics[quizIndex].questions.length) {
-        startQuiz(quizIndex, index + 1, score);
-    } else {
-        endQuiz(quizIndex, score);
-    }
-}
+// Duplicate function removed - using enhanced version below
 
 // End Quiz with Manga Rewards
 function endQuiz(quizIndex, score) {
@@ -1041,52 +1031,7 @@ function getQuizRotationInfo() {
     };
 }
 
-// Show quiz rotation status
-function showQuizStatus() {
-    // Update side panels for home-like display
-    // updateSidePanels('home'); // This function is no longer needed
-
-    const info = getQuizRotationInfo();
-    const istTime = getISTTime();
-
-    showPanel(`
-        <div class="manga-panel">
-            <h2 class="comic-title">📊 QUIZ ROTATION STATUS</h2>
-            
-            <div class="status-grid">
-                <div class="status-item">
-                    <div class="status-label">🌍 Current Time (IST)</div>
-                    <div class="status-value">${istTime}</div>
-                </div>
-                
-                <div class="status-item">
-                    <div class="status-label">🎯 Current Quiz Topic</div>
-                    <div class="status-value">${info.currentTopic}</div>
-                </div>
-                
-                <div class="status-item">
-                    <div class="status-label">⏰ Next Rotation In</div>
-                    <div class="status-value">${info.nextRotationHours}h ${info.nextRotationMinutes}m</div>
-                </div>
-                
-                <div class="status-item">
-                    <div class="status-label">🔓 Quiz Status</div>
-                    <div class="status-value ${info.canTake ? 'available' : 'locked'}">
-                        ${info.canTake ? '✅ AVAILABLE' : '🔒 LOCKED'}
-                    </div>
-                </div>
-            </div>
-            
-            <div class="quiz-info">
-                <p>🔄 Quizzes change every 12 hours based on IST Mumbai time</p>
-                <p>🎯 Each user can attempt a quiz once per rotation</p>
-                <p>⏰ Rotation times: 12:00 AM, 12:00 PM IST</p>
-            </div>
-            
-            <button class="button" onclick="loadLanding()">🏠 MAINFRAME</button>
-        </div>
-    `);
-}
+// Duplicate function removed - using enhanced version below
 
 // Initialization handled by window.addEventListener('load') below
 
