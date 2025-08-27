@@ -1245,8 +1245,9 @@ function resetData() {
         }
         loadLanding();
     }
-}// Enh
-anced Quiz Status Dashboard
+}
+
+// Enhanced Quiz Status Dashboard
 function showQuizStatus() {
     const quizIndex = getCurrentQuizIndex();
     const canTake = canUserTakeQuiz();
