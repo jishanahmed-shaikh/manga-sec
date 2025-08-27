@@ -1,0 +1,388 @@
+/* MANGA-SEC COMPONENTS MODULE */
+
+/* Progress Bar Component */
+.progress-bar {
+    width: 100%;
+    height: 20px;
+    background: var(--comic-light-gray);
+    border: 3px solid var(--comic-black);
+    position: relative;
+    overflow: hidden;
+    margin: 15px 0;
+}
+
+.progress-fill {
+    height: 100%;
+    background: var(--comic-black);
+    transition: width 0.5s ease;
+    position: relative;
+}
+
+.progress-fill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 5px,
+        rgba(255,255,255,0.2) 5px,
+        rgba(255,255,255,0.2) 10px
+    );
+}
+
+/* Notification Component */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: var(--comic-white);
+    border: 3px solid var(--comic-black);
+    padding: 15px 20px;
+    box-shadow: 4px 4px 0px var(--comic-black);
+    z-index: 1000;
+    animation: slideInFromRight 0.5s ease-out;
+    max-width: 300px;
+}
+
+.notification.success {
+    background: var(--comic-green);
+    color: var(--comic-white);
+}
+
+.notification.error {
+    background: var(--comic-red);
+    color: var(--comic-white);
+}
+
+.notification.warning {
+    background: #ffcc00;
+    color: var(--comic-black);
+}
+
+/* Modal Component */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 2000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeInUp 0.3s ease-out;
+}
+
+.modal-content {
+    background: var(--comic-white);
+    border: 4px solid var(--comic-black);
+    padding: 30px;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 8px 8px 0px var(--comic-black);
+    animation: bounceIn 0.5s ease-out;
+}
+
+.modal-header {
+    font-family: 'Bangers', cursive;
+    font-size: 2em;
+    margin-bottom: 20px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.modal-close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 2em;
+    cursor: pointer;
+    color: var(--comic-black);
+}
+
+/* Tooltip Component */
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip-text {
+    visibility: hidden;
+    width: 200px;
+    background: var(--comic-black);
+    color: var(--comic-white);
+    text-align: center;
+    border-radius: 0;
+    padding: 10px;
+    position: absolute;
+    z-index: 1001;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -100px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 0.9em;
+    border: 2px solid var(--comic-black);
+    box-shadow: 2px 2px 0px var(--comic-gray);
+}
+
+.tooltip:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Card Component */
+.card {
+    background: var(--comic-white);
+    border: 3px solid var(--comic-black);
+    padding: 20px;
+    margin: 15px;
+    box-shadow: 4px 4px 0px var(--comic-black);
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: 6px 6px 0px var(--comic-black);
+}
+
+.card-header {
+    font-family: 'Bangers', cursive;
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    border-bottom: 2px solid var(--comic-black);
+    padding-bottom: 10px;
+}
+
+.card-body {
+    font-family: 'Comic Neue', cursive;
+    line-height: 1.6;
+}
+
+/* Tab Component */
+.tabs {
+    border-bottom: 3px solid var(--comic-black);
+    margin-bottom: 20px;
+}
+
+.tab-list {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.tab-item {
+    background: var(--comic-light-gray);
+    border: 3px solid var(--comic-black);
+    border-bottom: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-family: 'Comic Neue', cursive;
+    font-weight: bold;
+    margin-right: 5px;
+    transition: all 0.3s ease;
+}
+
+.tab-item.active {
+    background: var(--comic-white);
+    transform: translateY(3px);
+}
+
+.tab-item:hover {
+    background: var(--comic-highlight);
+}
+
+.tab-content {
+    padding: 20px 0;
+}
+
+/* Accordion Component */
+.accordion-item {
+    border: 3px solid var(--comic-black);
+    margin-bottom: 10px;
+}
+
+.accordion-header {
+    background: var(--comic-light-gray);
+    padding: 15px 20px;
+    cursor: pointer;
+    font-family: 'Comic Neue', cursive;
+    font-weight: bold;
+    border-bottom: 2px solid var(--comic-black);
+    transition: all 0.3s ease;
+}
+
+.accordion-header:hover {
+    background: var(--comic-highlight);
+}
+
+.accordion-header.active {
+    background: var(--comic-black);
+    color: var(--comic-white);
+}
+
+.accordion-content {
+    padding: 20px;
+    background: var(--comic-white);
+    display: none;
+    animation: slideInFromTop 0.3s ease-out;
+}
+
+.accordion-content.active {
+    display: block;
+}
+
+/* Breadcrumb Component */
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+    font-family: 'Comic Neue', cursive;
+    font-weight: bold;
+}
+
+.breadcrumb-item {
+    color: var(--comic-gray);
+    text-decoration: none;
+    padding: 5px 10px;
+}
+
+.breadcrumb-item.active {
+    color: var(--comic-black);
+}
+
+.breadcrumb-separator {
+    margin: 0 5px;
+    color: var(--comic-gray);
+}
+
+/* Pagination Component */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px 0;
+    gap: 10px;
+}
+
+.pagination-item {
+    background: var(--comic-white);
+    border: 2px solid var(--comic-black);
+    padding: 8px 12px;
+    cursor: pointer;
+    font-family: 'Comic Neue', cursive;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    min-width: 40px;
+    text-align: center;
+}
+
+.pagination-item:hover {
+    background: var(--comic-black);
+    color: var(--comic-white);
+}
+
+.pagination-item.active {
+    background: var(--comic-black);
+    color: var(--comic-white);
+}
+
+.pagination-item.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Search Component */
+.search-container {
+    position: relative;
+    margin: 20px 0;
+}
+
+.search-input {
+    width: 100%;
+    padding: 15px 50px 15px 20px;
+    border: 3px solid var(--comic-black);
+    font-family: 'Comic Neue', cursive;
+    font-size: 1.1em;
+    background: var(--comic-white);
+    box-shadow: 2px 2px 0px var(--comic-gray);
+}
+
+.search-input:focus {
+    outline: none;
+    box-shadow: 4px 4px 0px var(--comic-gray);
+}
+
+.search-button {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--comic-black);
+    color: var(--comic-white);
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 1.2em;
+}
+
+/* Loading Spinner Component */
+.loading-spinner {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border: 4px solid var(--comic-light-gray);
+    border-radius: 50%;
+    border-top-color: var(--comic-black);
+    animation: loadingSpinner 1s ease-in-out infinite;
+}
+
+/* Alert Component */
+.alert {
+    padding: 15px 20px;
+    margin: 15px 0;
+    border: 3px solid var(--comic-black);
+    font-family: 'Comic Neue', cursive;
+    font-weight: bold;
+    position: relative;
+}
+
+.alert.info {
+    background: var(--comic-blue);
+    color: var(--comic-white);
+}
+
+.alert.success {
+    background: var(--comic-green);
+    color: var(--comic-white);
+}
+
+.alert.warning {
+    background: #ffcc00;
+    color: var(--comic-black);
+}
+
+.alert.error {
+    background: var(--comic-red);
+    color: var(--comic-white);
+}
+
+.alert-close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
+    color: inherit;
+}

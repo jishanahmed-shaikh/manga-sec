@@ -1,0 +1,213 @@
+/* MANGA-SEC ANIMATIONS MODULE */
+
+/* Panel Animations */
+@keyframes panelAppear {
+    0% { 
+        transform: scale(0.8) rotate(-5deg); 
+        opacity: 0; 
+    }
+    50% { 
+        transform: scale(1.1) rotate(2deg); 
+        opacity: 0.8; 
+    }
+    100% { 
+        transform: scale(1) rotate(-1deg); 
+        opacity: 1; 
+    }
+}
+
+@keyframes comicZoom {
+    0% { transform: scale(1) rotate(0deg); }
+    50% { transform: scale(1.2) rotate(2deg); }
+    100% { transform: scale(1) rotate(0deg); }
+}
+
+@keyframes shakeEffect {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-2px); }
+    20%, 40%, 60%, 80% { transform: translateX(2px); }
+}
+
+@keyframes glowPulse {
+    0%, 100% { 
+        box-shadow: 0 0 5px var(--comic-black);
+    }
+    50% { 
+        box-shadow: 0 0 20px var(--comic-black), 0 0 30px var(--comic-gray);
+    }
+}
+
+@keyframes typewriter {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+@keyframes bounceIn {
+    0% {
+        transform: scale(0.3) rotate(-10deg);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.05) rotate(2deg);
+        opacity: 0.8;
+    }
+    70% {
+        transform: scale(0.9) rotate(-1deg);
+        opacity: 0.9;
+    }
+    100% {
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInFromBottom {
+    0% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes rotateIn {
+    0% {
+        transform: rotate(-200deg) scale(0);
+        opacity: 0;
+    }
+    100% {
+        transform: rotate(0deg) scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes comicPop {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.3); }
+    100% { transform: scale(1); }
+}
+
+/* Badge Animations */
+@keyframes badgeEarn {
+    0% { 
+        transform: scale(0) rotate(-180deg);
+        opacity: 0;
+    }
+    50% { 
+        transform: scale(1.3) rotate(10deg);
+        opacity: 0.8;
+    }
+    100% { 
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+    }
+}
+
+@keyframes sparkle {
+    0%, 100% { 
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+    }
+    25% { 
+        transform: scale(1.2) rotate(90deg);
+        opacity: 0.8;
+    }
+    50% { 
+        transform: scale(0.8) rotate(180deg);
+        opacity: 0.6;
+    }
+    75% { 
+        transform: scale(1.1) rotate(270deg);
+        opacity: 0.9;
+    }
+}
+
+/* Loading Animations */
+@keyframes loadingSpinner {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes loadingBars {
+    0%, 40%, 100% { transform: scaleY(0.4); }
+    20% { transform: scaleY(1.0); }
+}
+
+/* Hover Effects */
+@keyframes hoverGlow {
+    0% { filter: drop-shadow(0 0 5px transparent); }
+    100% { filter: drop-shadow(0 0 15px var(--comic-black)); }
+}
+
+/* Success Animations */
+@keyframes successBurst {
+    0% { 
+        transform: scale(0);
+        opacity: 1;
+    }
+    50% { 
+        transform: scale(1.5);
+        opacity: 0.7;
+    }
+    100% { 
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+/* Error Animations */
+@keyframes errorShake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+    20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+/* Particle Effects */
+@keyframes particleFloat {
+    0% { 
+        transform: translateY(0px) rotate(0deg);
+        opacity: 1;
+    }
+    100% { 
+        transform: translateY(-100px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Comic Book Effects */
+@keyframes comicBoom {
+    0% { 
+        transform: scale(0) rotate(-45deg);
+        opacity: 0;
+    }
+    50% { 
+        transform: scale(1.2) rotate(0deg);
+        opacity: 1;
+    }
+    100% { 
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+    }
+}
+
+@keyframes speechBubbleAppear {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    80% {
+        transform: scale(1.1);
+        opacity: 0.9;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
