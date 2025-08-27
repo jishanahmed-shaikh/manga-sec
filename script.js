@@ -1716,8 +1716,9 @@ function toggleParticles() {
             window.notifications.show(`Particles ${enabled ? 'enabled' : 'disabled'}`, 'info', 2000);
         }
     }
-}// Enhan
-ced theme changing function
+}
+
+// Enhanced theme changing function
 function changeTheme(themeName) {
     if (window.themeManager) {
         window.themeManager.applyTheme(themeName);
