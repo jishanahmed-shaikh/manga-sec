@@ -1331,4 +1331,182 @@ function getRecentHistory() {
             <div class="history-date">${new Date(quiz.date).toLocaleDateString()}</div>
         </div>
     `).join('');
+}// Initi
+alize all systems when page loads
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize core systems
+    window.soundEffects = new SoundEffects();
+    window.notifications = new NotificationSystem();
+    window.themeManager = new ThemeManager();
+    window.particleSystem = new ParticleSystem();
+    window.keyboardShortcuts = new KeyboardShortcuts();
+    
+    // Load user progress
+    loadUserProgress();
+    
+    // Show welcome message for new users
+    if (userProgress.totalQuizzes === 0) {
+        setTimeout(() => {
+            if (window.notifications) {
+                window.notifications.show('🎉 Welcome to MANGA-SEC! Start your cybersecurity journey!', 'success', 4000);
+            }
+        }, 2000);
+    }
+    
+    // Initialize the app
+    setTimeout(() => {
+        loadLanding();
+    }, 1000);
+});
+
+// Enhanced progress tracking
+function trackQuizCompletion(score, time, topic) {
+    // Update basic stats
+    userProgress.totalQuizzes++;
+    
+    // Track perfect scores
+    if (score === 3) {
+        userProgress.perfectScores++;
+        userProgress.currentStreak++;
+        
+        // Create particle effect for perfect score
+        if (window.particleSystem) {
+            const centerX = window.innerWidth / 2;
+            const centerY = window.innerHeight / 2;
+            window.particleSystem.createBurst(centerX, centerY, 15, 'success');
+        }
+    } else {
+        userProgress.currentStreak = 0;
+    }
+    
+    // Update best streak
+    if (userProgress.currentStreak > userProgress.bestStreak) {
+        userProgress.bestStreak = userProgress.currentStreak;
+    }
+    
+    // Add to history
+    userProgress.quizHistory.push({
+        topic: topic,
+        score: score,
+        time: time,
+        date: new Date().toISOString(),
+        perfect: score === 3
+    });
+    
+    // Keep only last 50 entries
+    if (userProgress.quizHistory.length > 50) {
+        userProgress.quizHistory = userProgress.quizHistory.slice(-50);
+    }
+    
+    // Check for new badges
+    const newBadges = checkAndAwardBadges(score, time);
+    
+    // Show badge notifications
+    if (newBadges.length > 0) {
+        newBadges.forEach((badgeId, index) => {
+            const badge = badges.find(b => b.id === badgeId);
+            if (badge) {
+                setTimeout(() => {
+                    if (window.notifications) {
+                        window.notifications.show(`🏆 Badge Earned: ${badge.name}`, 'badge', 5000);
+                    }
+                    if (window.particleSystem) {
+                        const x = Math.random() * window.innerWidth;
+                        const y = Math.random() * window.innerHeight * 0.5;
+                        window.particleSystem.createBurst(x, y, 8, 'badge');
+                    }
+                }, index * 1000);
+            }
+        });
+    }
+    
+    saveUserProgress();
+    return newBadges;
+}
+
+// Enhanced quiz completion with better feedback
+function completeQuiz(quizIndex, score) {
+    const quizTime = getQuizTime();
+    const topic = randomizedTopics[quizIndex].title;
+    
+    // Track completion
+    const newBadges = trackQuizCompletion(score, quizTime, topic);
+    
+    // Mark quiz as attempted
+    markQuizAttempt();
+    
+    // Show results with enhanced feedback
+    showQuizResults(score, quizTime, topic, newBadges);
+}
+
+function showQuizResults(score, time, topic, newBadges) {
+    const percentage = Math.round((score / 3) * 100);
+    const timeFormatted = `${Math.floor(time / 60)}:${(time % 60).toString().padStart(2, '0')}`;
+    
+    let resultMessage = '';
+    let resultClass = '';
+    
+    if (score === 3) {
+        resultMessage = 'PERFECT! ELITE HACKER STATUS ACHIEVED!';
+        resultClass = 'perfect';
+    } else if (score === 2) {
+        resultMessage = 'EXCELLENT! CYBER DEFENDER LEVEL!';
+        resultClass = 'good';
+    } else if (score === 1) {
+        resultMessage = 'GOOD START! KEEP LEARNING!';
+        resultClass = 'okay';
+    } else {
+        resultMessage = 'STUDY MORE! KNOWLEDGE IS POWER!';
+        resultClass = 'needs-work';
+    }
+    
+    showPanel(`
+        <div class="manga-panel">
+            <div class="result-header ${resultClass}">
+                <h2 class="comic-title">${resultMessage}</h2>
+                <div class="result-topic">${topic}</div>
+            </div>
+            
+            <div class="result-stats">
+                <div class="stat-item">
+                    <div class="stat-icon">🎯</div>
+                    <div class="stat-label">Score</div>
+                    <div class="stat-value">${score}/3 (${percentage}%)</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-icon">⏱️</div>
+                    <div class="stat-label">Time</div>
+                    <div class="stat-value">${timeFormatted}</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-icon">🔥</div>
+                    <div class="stat-label">Streak</div>
+                    <div class="stat-value">${userProgress.currentStreak}</div>
+                </div>
+            </div>
+            
+            ${newBadges.length > 0 ? `
+                <div class="new-badges-section">
+                    <h3 class="comic-title">🎉 NEW BADGES EARNED!</h3>
+                    <div class="new-badges-grid">
+                        ${newBadges.map(badgeId => {
+                            const badge = badges.find(b => b.id === badgeId);
+                            return badge ? `
+                                <div class="new-badge-item">
+                                    <div class="badge-icon">${badge.icon}</div>
+                                    <div class="badge-name">${badge.name}</div>
+                                </div>
+                            ` : '';
+                        }).join('')}
+                    </div>
+                </div>
+            ` : ''}
+            
+            <div class="result-actions">
+                <button class="button" onclick="showQuizStatus()">📊 VIEW PROGRESS</button>
+                <button class="button" onclick="showBadgeGallery()">🏅 VIEW BADGES</button>
+                <button class="button" onclick="loadLanding()">🏠 MAINFRAME</button>
+            </div>
+        </div>
+    `);
 }

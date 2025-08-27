@@ -1201,4 +1201,170 @@ kbd {
         flex-direction: column;
         align-items: center;
     }
+}/* 
+ACCESSIBILITY STYLES */
+.high-contrast {
+    --comic-red: #ff0000 !important;
+    --comic-green: #00ff00 !important;
+    --comic-blue: #0000ff !important;
+}
+
+.large-text {
+    font-size: 120% !important;
+}
+
+.large-text .comic-title {
+    font-size: 3em !important;
+}
+
+.large-text .title {
+    font-size: 4.2em !important;
+}
+
+.large-text .button {
+    font-size: 1.4em !important;
+    padding: 18px 36px !important;
+}
+
+.reduced-motion * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+}
+
+.screen-reader-mode .manga-artwork {
+    display: none !important;
+}
+
+.screen-reader-mode .comic-grid {
+    display: none !important;
+}
+
+/* RESULT STYLES */
+.result-header {
+    text-align: center;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 3px solid var(--comic-black);
+    box-shadow: 4px 4px 0px var(--comic-gray);
+}
+
+.result-header.perfect {
+    background: var(--comic-green);
+    color: var(--comic-white);
+}
+
+.result-header.good {
+    background: #ffcc00;
+    color: var(--comic-black);
+}
+
+.result-header.okay {
+    background: #ff9900;
+    color: var(--comic-white);
+}
+
+.result-header.needs-work {
+    background: var(--comic-red);
+    color: var(--comic-white);
+}
+
+.result-topic {
+    font-family: 'Comic Neue', cursive;
+    font-size: 1.2em;
+    margin-top: 10px;
+    opacity: 0.9;
+}
+
+.result-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.stat-item {
+    background: var(--com
+ic-white);
+    border: 3px solid var(--comic-black);
+    padding: 15px;
+    text-align: center;
+    box-shadow: 2px 2px 0px var(--comic-gray);
+}
+
+.stat-icon {
+    font-size: 2em;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.stat-label {
+    font-family: 'Comic Neue', cursive;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: var(--comic-gray);
+}
+
+.stat-value {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 1.1em;
+    color: var(--comic-black);
+}
+
+.new-badges-section {
+    background: var(--comic-light-gray);
+    border: 3px solid var(--comic-black);
+    padding: 20px;
+    margin: 20px 0;
+    box-shadow: 4px 4px 0px var(--comic-gray);
+    animation: bounceIn 0.8s ease-out;
+}
+
+.new-badges-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.new-badge-item {
+    background: var(--comic-white);
+    border: 2px solid var(--comic-black);
+    padding: 15px;
+    text-align: center;
+    box-shadow: 2px 2px 0px var(--comic-gray);
+    animation: badgeEarn 0.6s ease-out;
+}
+
+.new-badge-item .badge-icon {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.new-badge-item .badge-name {
+    font-family: 'Bangers', cursive;
+    font-size: 1em;
+    text-transform: uppercase;
+    color: var(--comic-black);
+}
+
+.result-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+/* FOCUS INDICATORS */
+button:focus,
+.button:focus {
+    outline: 3px solid var(--comic-blue);
+    outline-offset: 2px;
+}
+
+/* SKIP LINK */
+.skip-link:focus {
+    top: 6px !important;
 }
