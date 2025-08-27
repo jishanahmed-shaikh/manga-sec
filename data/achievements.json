@@ -1,0 +1,44 @@
+{
+  "badges": [
+    {
+      "id": "first_quiz",
+      "name": "🌱 CYBER ROOKIE",
+      "description": "Completed your first cybersecurity quiz",
+      "icon": "🔓",
+      "rarity": "common",
+      "points": 10
+    },
+    {
+      "id": "perfect_score",
+      "name": "🏆 ELITE HACKER",
+      "description": "Achieved 100% on a quiz",
+      "icon": "💎",
+      "rarity": "rare",
+      "points": 50
+    },
+    {
+      "id": "speed_demon",
+      "name": "🚀 SPEED HACKER",
+      "description": "Completed quiz under 30 seconds",
+      "icon": "⚡",
+      "rarity": "epic",
+      "points": 75
+    },
+    {
+      "id": "night_owl",
+      "name": "🦉 NIGHT GUARDIAN",
+      "description": "Completed quiz between 10 PM - 6 AM",
+      "icon": "🌙",
+      "rarity": "uncommon",
+      "points": 25
+    },
+    {
+      "id": "streak_master",
+      "name": "🔥 STREAK MASTER",
+      "description": "Maintained 7-day perfect streak",
+      "icon": "🔥",
+      "rarity": "legendary",
+      "points": 100
+    }
+  ]
+}

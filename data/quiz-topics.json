@@ -1,0 +1,46 @@
+{
+  "cybersecurity_topics": [
+    {
+      "id": "phishing",
+      "title": "Phishing Attacks",
+      "description": "Learn to identify and prevent deceptive email attacks",
+      "difficulty": "beginner",
+      "category": "social_engineering",
+      "questions": [
+        {
+          "question": "What is the primary goal of phishing attacks?",
+          "options": ["Steal credentials", "Delete files", "Slow down systems", "Install games"],
+          "correct": 0,
+          "explanation": "Phishing attacks primarily aim to steal user credentials and sensitive information."
+        },
+        {
+          "question": "Which email characteristic suggests phishing?",
+          "options": ["Professional signature", "Urgent action required", "Company logo", "Proper grammar"],
+          "correct": 1,
+          "explanation": "Phishing emails often create false urgency to pressure victims into quick actions."
+        },
+        {
+          "question": "Best defense against phishing?",
+          "options": ["Click all links", "Verify sender independently", "Forward to friends", "Reply immediately"],
+          "correct": 1,
+          "explanation": "Always verify the sender through independent channels before taking any action."
+        }
+      ]
+    },
+    {
+      "id": "malware",
+      "title": "Malware Defense",
+      "description": "Understanding and preventing malicious software attacks",
+      "difficulty": "intermediate",
+      "category": "threats",
+      "questions": [
+        {
+          "question": "What does ransomware do?",
+          "options": ["Encrypts files for ransom", "Speeds up computer", "Organizes files", "Updates software"],
+          "correct": 0,
+          "explanation": "Ransomware encrypts victim files and demands payment for decryption keys."
+        }
+      ]
+    }
+  ]
+}
