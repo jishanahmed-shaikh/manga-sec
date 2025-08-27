@@ -557,10 +557,11 @@ function loadLanding() {
                 </div>
             </div>
             
-            <button class="button" onclick="showComicIntro()">🚀 INITIALIZE</button>
-            <button class="button" onclick="showBadgeGallery()">🏅 BADGE GALLERY</button>
-            <button class="button" onclick="showQuizStatus()">📊 QUIZ STATUS</button>
-            <button class="button" onclick="showSettings()">⚙️ SETTINGS</button>
+            <button class="button" onclick="window.router.navigate('quiz')">🚀 INITIALIZE</button>
+            <button class="button" onclick="window.router.navigate('badges')">🏅 BADGE GALLERY</button>
+            <button class="button" onclick="window.router.navigate('status')">📊 QUIZ STATUS</button>
+            <button class="button" onclick="window.router.navigate('settings')">⚙️ SETTINGS</button>
+            <button class="button" onclick="installPWA()" id="install-btn" style="display: none;">📱 INSTALL APP</button>
         </div>
     `);
     
@@ -1103,6 +1104,24 @@ function showSettings() {
                 </div>
                 
                 <div class="setting-item">
+                    <h3>♿ Accessibility</h3>
+                    <div class="accessibility-options">
+                        <button class="button" onclick="toggleHighContrast()" id="contrast-toggle">
+                            ${window.accessibility && window.accessibility.getSettings().highContrast ? '🔆 High Contrast ON' : '🔅 High Contrast OFF'}
+                        </button>
+                        <button class="button" onclick="toggleLargeText()" id="text-toggle">
+                            ${window.accessibility && window.accessibility.getSettings().largeText ? '🔤 Large Text ON' : '🔡 Large Text OFF'}
+                        </button>
+                        <button class="button" onclick="toggleReducedMotion()" id="motion-toggle">
+                            ${window.accessibility && window.accessibility.getSettings().reducedMotion ? '🚫 Reduced Motion ON' : '✨ Reduced Motion OFF'}
+                        </button>
+                        <button class="button" onclick="toggleParticles()" id="particles-toggle">
+                            ${window.particleSystem && window.particleSystem.enabled ? '✨ Particles ON' : '🚫 Particles OFF'}
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="setting-item">
                     <h3>📊 Statistics</h3>
                     <div class="stats-display">
                         <p>Total Quizzes: ${userProgress.totalQuizzes}</p>
@@ -1509,4 +1528,152 @@ function showQuizResults(score, time, topic, newBadges) {
             </div>
         </div>
     `);
+}// Up
+date existing functions to use new systems
+function checkAnswer(quizIndex, index, score, correct) {
+    if (correct) {
+        score++;
+        if (window.soundEffects) {
+            window.soundEffects.play('success');
+        }
+        if (window.particleSystem) {
+            const button = event.target;
+            const rect = button.getBoundingClientRect();
+            window.particleSystem.createBurst(
+                rect.left + rect.width / 2,
+                rect.top + rect.height / 2,
+                5,
+                'success'
+            );
+        }
+    } else {
+        if (window.soundEffects) {
+            window.soundEffects.play('error');
+        }
+    }
+    
+    if (index + 1 < randomizedTopics[quizIndex].questions.length) {
+        startQuiz(quizIndex, index + 1, score);
+    } else {
+        completeQuiz(quizIndex, score);
+    }
+}
+
+// Initialize systems on load
+window.addEventListener('load', function() {
+    // Initialize all systems
+    window.soundEffects = new SoundEffects();
+    window.notifications = new NotificationSystem();
+    window.themeManager = new ThemeManager();
+    window.particleSystem = new ParticleSystem();
+    window.keyboardShortcuts = new KeyboardShortcuts();
+    window.analytics = new Analytics();
+    window.accessibility = new AccessibilityManager();
+    window.router = new Router();
+    
+    // Load user progress
+    loadUserProgress();
+    
+    // Track initial page load
+    if (window.analytics) {
+        window.analytics.trackPageView('home');
+    }
+    
+    // Show welcome for new users
+    if (userProgress.totalQuizzes === 0) {
+        setTimeout(() => {
+            if (window.notifications) {
+                window.notifications.show('🎉 Welcome to MANGA-SEC!', 'success', 4000);
+            }
+        }, 2000);
+    }
+    
+    // Start the app
+    setTimeout(loadLanding, 1000);
+});/
+/ PWA Service Worker Registration
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+            .then((registration) => {
+                console.log('MANGA-SEC: SW registered', registration);
+                
+                // Check for updates
+                registration.addEventListener('updatefound', () => {
+                    const newWorker = registration.installing;
+                    newWorker.addEventListener('statechange', () => {
+                        if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                            if (window.notifications) {
+                                window.notifications.show('🔄 App updated! Refresh to get new features.', 'info', 8000);
+                            }
+                        }
+                    });
+                });
+            })
+            .catch((error) => {
+                console.log('MANGA-SEC: SW registration failed', error);
+            });
+    });
+}
+
+// PWA Install Prompt
+let deferredPrompt;
+window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    
+    // Show install button
+    const installBtn = document.getElementById('install-btn');
+    if (installBtn) {
+        installBtn.style.display = 'inline-block';
+    }
+    
+    setTimeout(() => {
+        if (window.notifications) {
+            window.notifications.show('📱 Install MANGA-SEC as an app for better experience!', 'info', 6000);
+        }
+    }, 10000);
+});
+
+function installPWA() {
+    if (deferredPrompt) {
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then((choiceResult) => {
+            if (choiceResult.outcome === 'accepted') {
+                console.log('User accepted PWA install');
+            }
+            deferredPrompt = null;
+        });
+    }
+}// En
+hanced accessibility functions
+function toggleHighContrast() {
+    if (window.accessibility) {
+        const enabled = window.accessibility.toggleHighContrast();
+        document.getElementById('contrast-toggle').innerHTML = enabled ? '🔆 High Contrast ON' : '🔅 High Contrast OFF';
+    }
+}
+
+function toggleLargeText() {
+    if (window.accessibility) {
+        const enabled = window.accessibility.toggleLargeText();
+        document.getElementById('text-toggle').innerHTML = enabled ? '🔤 Large Text ON' : '🔡 Large Text OFF';
+    }
+}
+
+function toggleReducedMotion() {
+    if (window.accessibility) {
+        const enabled = window.accessibility.toggleReducedMotion();
+        document.getElementById('motion-toggle').innerHTML = enabled ? '🚫 Reduced Motion ON' : '✨ Reduced Motion OFF';
+    }
+}
+
+function toggleParticles() {
+    if (window.particleSystem) {
+        const enabled = window.particleSystem.toggle();
+        document.getElementById('particles-toggle').innerHTML = enabled ? '✨ Particles ON' : '🚫 Particles OFF';
+        if (window.notifications) {
+            window.notifications.show(`Particles ${enabled ? 'enabled' : 'disabled'}`, 'info', 2000);
+        }
+    }
 }

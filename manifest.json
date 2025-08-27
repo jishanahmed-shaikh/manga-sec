@@ -1,0 +1,65 @@
+{
+  "name": "MANGA-SEC: Cybersecurity Adventures",
+  "short_name": "MANGA-SEC",
+  "description": "Learn cybersecurity through interactive manga-style adventures with AI ethics integration",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "orientation": "portrait-primary",
+  "categories": ["education", "games", "security"],
+  "lang": "en",
+  "icons": [
+    {
+      "src": "Assets/Manga-Sec-Logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "Assets/Manga-Sec-Logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "Assets/SS-HomePage1.png",
+      "sizes": "800x600",
+      "type": "image/png",
+      "label": "MANGA-SEC Home Page"
+    }
+  ],
+  "features": [
+    "Cross Platform",
+    "Fast",
+    "Simple"
+  ],
+  "shortcuts": [
+    {
+      "name": "Start Quiz",
+      "short_name": "Quiz",
+      "description": "Start a cybersecurity quiz",
+      "url": "/?action=quiz",
+      "icons": [
+        {
+          "src": "Assets/Manga-Sec-Logo.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "View Badges",
+      "short_name": "Badges",
+      "description": "View earned badges",
+      "url": "/?action=badges",
+      "icons": [
+        {
+          "src": "Assets/Manga-Sec-Logo.png",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ]
+}
