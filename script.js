@@ -1213,4 +1213,122 @@ function resetData() {
         }
         loadLanding();
     }
+}// Enh
+anced Quiz Status Dashboard
+function showQuizStatus() {
+    const quizIndex = getCurrentQuizIndex();
+    const canTake = canUserTakeQuiz();
+    const nextQuizTime = getNextQuizTime();
+    const currentTopic = randomizedTopics[quizIndex];
+    
+    showPanel(`
+        <div class="manga-panel">
+            <h2 class="comic-title">📊 QUIZ STATUS DASHBOARD</h2>
+            
+            <div class="quiz-status-grid">
+                <div class="status-card">
+                    <span class="status-icon">🎯</span>
+                    <div class="status-title">Current Quiz</div>
+                    <div class="status-value">${currentTopic.title}</div>
+                </div>
+                
+                <div class="status-card">
+                    <span class="status-icon">${canTake ? '✅' : '🔒'}</span>
+                    <div class="status-title">Availability</div>
+                    <div class="status-value ${canTake ? 'available' : 'locked'}">
+                        ${canTake ? 'AVAILABLE' : 'LOCKED'}
+                    </div>
+                </div>
+                
+                <div class="status-card">
+                    <span class="status-icon">⏰</span>
+                    <div class="status-title">Next Quiz</div>
+                    <div class="status-value warning">${nextQuizTime}</div>
+                </div>
+                
+                <div class="status-card">
+                    <span class="status-icon">🔄</span>
+                    <div class="status-title">Rotation</div>
+                    <div class="status-value">Every 12H</div>
+                </div>
+                
+                <div class="status-card">
+                    <span class="status-icon">📈</span>
+                    <div class="status-title">Total Completed</div>
+                    <div class="status-value">${userProgress.totalQuizzes}</div>
+                </div>
+                
+                <div class="status-card">
+                    <span class="status-icon">🏆</span>
+                    <div class="status-title">Perfect Scores</div>
+                    <div class="status-value">${userProgress.perfectScores}</div>
+                </div>
+                
+                <div class="status-card">
+                    <span class="status-icon">🔥</span>
+                    <div class="status-title">Current Streak</div>
+                    <div class="status-value">${userProgress.currentStreak}</div>
+                </div>
+                
+                <div class="status-card">
+                    <span class="status-icon">⭐</span>
+                    <div class="status-title">Best Streak</div>
+                    <div class="status-value">${userProgress.bestStreak}</div>
+                </div>
+            </div>
+            
+            <div class="quiz-history-section">
+                <h3 class="comic-title">📚 Recent Quiz History</h3>
+                <div class="history-list">
+                    ${getRecentHistory()}
+                </div>
+            </div>
+            
+            <div class="button-group">
+                ${canTake ? '<button class="button" onclick="startTopic()">🚀 TAKE QUIZ</button>' : ''}
+                <button class="button" onclick="loadLanding()">🏠 MAINFRAME</button>
+            </div>
+        </div>
+    `);
+    
+    // Start countdown if quiz is locked
+    if (!canTake) {
+        startCountdownTimer();
+    }
+}
+
+function getNextQuizTime() {
+    const quizIndex = getCurrentQuizIndex();
+    const lastAttempt = localStorage.getItem(`quiz-attempt-${quizIndex}`);
+    
+    if (!lastAttempt) return 'NOW';
+    
+    const lastAttemptTime = parseInt(lastAttempt);
+    const nextQuizTime = lastAttemptTime + (QUIZ_ROTATION_HOURS * 60 * 60 * 1000);
+    const timeUntilNext = nextQuizTime - Date.now();
+    
+    if (timeUntilNext <= 0) return 'NOW';
+    
+    const hours = Math.floor(timeUntilNext / (1000 * 60 * 60));
+    const minutes = Math.floor((timeUntilNext % (1000 * 60 * 60)) / (1000 * 60));
+    
+    return `${hours}h ${minutes}m`;
+}
+
+function getRecentHistory() {
+    if (!userProgress.quizHistory || userProgress.quizHistory.length === 0) {
+        return '<p class="no-history">No quiz history yet. Take your first quiz!</p>';
+    }
+    
+    const recent = userProgress.quizHistory.slice(-5).reverse();
+    return recent.map(quiz => `
+        <div class="history-item">
+            <div class="history-topic">${quiz.topic}</div>
+            <div class="history-score ${quiz.score === 3 ? 'perfect' : quiz.score >= 2 ? 'good' : 'needs-improvement'}">
+                ${quiz.score}/3
+            </div>
+            <div class="history-time">${Math.floor(quiz.time / 60)}:${(quiz.time % 60).toString().padStart(2, '0')}</div>
+            <div class="history-date">${new Date(quiz.date).toLocaleDateString()}</div>
+        </div>
+    `).join('');
 }
