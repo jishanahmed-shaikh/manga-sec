@@ -560,6 +560,7 @@ function loadLanding() {
             <button class="button" onclick="showComicIntro()">🚀 INITIALIZE</button>
             <button class="button" onclick="showBadgeGallery()">🏅 BADGE GALLERY</button>
             <button class="button" onclick="showQuizStatus()">📊 QUIZ STATUS</button>
+            <button class="button" onclick="showSettings()">⚙️ SETTINGS</button>
         </div>
     `);
     
@@ -1074,3 +1075,142 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }, 2000);
 });
+// Sett
+ings Panel
+function showSettings() {
+    const currentTheme = window.themeManager ? window.themeManager.getCurrentTheme() : 'light';
+    const soundEnabled = window.soundEffects ? window.soundEffects.enabled : true;
+    
+    showPanel(`
+        <div class="manga-panel">
+            <h2 class="comic-title">⚙️ SETTINGS PANEL</h2>
+            
+            <div class="settings-grid">
+                <div class="setting-item">
+                    <h3>🎨 Theme</h3>
+                    <div class="theme-options">
+                        <button class="button ${currentTheme === 'light' ? 'active' : ''}" onclick="changeTheme('light')">🌞 Light</button>
+                        <button class="button ${currentTheme === 'dark' ? 'active' : ''}" onclick="changeTheme('dark')">🌙 Dark</button>
+                        <button class="button ${currentTheme === 'sepia' ? 'active' : ''}" onclick="changeTheme('sepia')">📜 Sepia</button>
+                    </div>
+                </div>
+                
+                <div class="setting-item">
+                    <h3>🔊 Sound Effects</h3>
+                    <button class="button" onclick="toggleSound()" id="sound-toggle">
+                        ${soundEnabled ? '🔊 ON' : '🔇 OFF'}
+                    </button>
+                </div>
+                
+                <div class="setting-item">
+                    <h3>📊 Statistics</h3>
+                    <div class="stats-display">
+                        <p>Total Quizzes: ${userProgress.totalQuizzes}</p>
+                        <p>Perfect Scores: ${userProgress.perfectScores}</p>
+                        <p>Current Streak: ${userProgress.currentStreak}</p>
+                        <p>Best Streak: ${userProgress.bestStreak}</p>
+                        <p>Badges Earned: ${userProgress.badges.length}</p>
+                    </div>
+                </div>
+                
+                <div class="setting-item">
+                    <h3>💾 Data Management</h3>
+                    <button class="button" onclick="exportData()">📤 Export Data</button>
+                    <button class="button" onclick="importData()">📥 Import Data</button>
+                    <button class="button" onclick="resetData()" style="background: var(--comic-red); color: var(--comic-white);">🗑️ Reset All</button>
+                </div>
+            </div>
+            
+            <button class="button" onclick="loadLanding()">🏠 BACK TO MAINFRAME</button>
+        </div>
+    `);
+}
+
+function changeTheme(theme) {
+    if (window.themeManager) {
+        window.themeManager.applyTheme(theme);
+        showSettings(); // Refresh settings panel
+    }
+}
+
+function toggleSound() {
+    if (window.soundEffects) {
+        const enabled = window.soundEffects.toggle();
+        document.getElementById('sound-toggle').innerHTML = enabled ? '🔊 ON' : '🔇 OFF';
+        if (window.notifications) {
+            window.notifications.show(`Sound ${enabled ? 'enabled' : 'disabled'}`, 'info', 2000);
+        }
+    }
+}
+
+function exportData() {
+    const data = {
+        progress: userProgress,
+        settings: {
+            theme: window.themeManager ? window.themeManager.getCurrentTheme() : 'light',
+            sound: window.soundEffects ? window.soundEffects.enabled : true
+        },
+        timestamp: new Date().toISOString()
+    };
+    
+    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `manga-sec-backup-${new Date().toISOString().split('T')[0]}.json`;
+    a.click();
+    URL.revokeObjectURL(url);
+    
+    if (window.notifications) {
+        window.notifications.show('Data exported successfully!', 'success');
+    }
+}
+
+function importData() {
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = '.json';
+    input.onchange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                try {
+                    const data = JSON.parse(e.target.result);
+                    if (data.progress) {
+                        userProgress = data.progress;
+                        saveUserProgress();
+                        if (window.notifications) {
+                            window.notifications.show('Data imported successfully!', 'success');
+                        }
+                        showSettings(); // Refresh settings
+                    }
+                } catch (error) {
+                    if (window.notifications) {
+                        window.notifications.show('Invalid backup file!', 'error');
+                    }
+                }
+            };
+            reader.readAsText(file);
+        }
+    };
+    input.click();
+}
+
+function resetData() {
+    if (confirm('Are you sure you want to reset all data? This cannot be undone!')) {
+        localStorage.clear();
+        userProgress = {
+            badges: [],
+            quizHistory: [],
+            currentStreak: 0,
+            bestStreak: 0,
+            totalQuizzes: 0,
+            perfectScores: 0
+        };
+        if (window.notifications) {
+            window.notifications.show('All data has been reset!', 'warning');
+        }
+        loadLanding();
+    }
+}
