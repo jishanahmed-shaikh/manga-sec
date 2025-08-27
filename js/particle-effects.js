@@ -20,7 +20,7 @@ class ParticleSystem {
             width: 100%;
             height: 100%;
             pointer-events: none;
-            z-index: -1;
+            z-index: 1000;
         `;
         this.canvas.width = window.innerWidth;
         this.canvas.height = window.innerHeight;
@@ -45,7 +45,7 @@ class ParticleSystem {
             vy: (Math.random() - 0.5) * 4 - 2,
             life: 1.0,
             decay: 0.02,
-            size: Math.random() * 8 + 4,
+            size: Math.random() * 15 + 8,
             type: type,
             rotation: Math.random() * Math.PI * 2,
             rotationSpeed: (Math.random() - 0.5) * 0.2

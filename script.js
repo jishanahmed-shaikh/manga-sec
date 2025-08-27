@@ -1046,11 +1046,28 @@ function showSettings() {
             
             <div class="settings-grid">
                 <div class="setting-item">
-                    <h3>🎨 Theme</h3>
-                    <div class="theme-options">
-                        <button class="button ${currentTheme === 'light' ? 'active' : ''}" onclick="changeTheme('light')">🌞 Light</button>
-                        <button class="button ${currentTheme === 'dark' ? 'active' : ''}" onclick="changeTheme('dark')">🌙 Dark</button>
-                        <button class="button ${currentTheme === 'sepia' ? 'active' : ''}" onclick="changeTheme('sepia')">📜 Sepia</button>
+                    <h3>🎨 Theme Selection</h3>
+                    <div class="theme-grid">
+                        <button class="button theme-btn ${currentTheme === 'light' ? 'active' : ''}" onclick="changeTheme('light')">🌞 Classic Light</button>
+                        <button class="button theme-btn ${currentTheme === 'dark' ? 'active' : ''}" onclick="changeTheme('dark')">🌙 Dark Mode</button>
+                        <button class="button theme-btn ${currentTheme === 'sepia' ? 'active' : ''}" onclick="changeTheme('sepia')">📜 Vintage Sepia</button>
+                        <button class="button theme-btn ${currentTheme === 'neon' ? 'active' : ''}" onclick="changeTheme('neon')">💚 Matrix Green</button>
+                        <button class="button theme-btn ${currentTheme === 'cyberpunk' ? 'active' : ''}" onclick="changeTheme('cyberpunk')">💖 Cyberpunk Pink</button>
+                        <button class="button theme-btn ${currentTheme === 'hacker' ? 'active' : ''}" onclick="changeTheme('hacker')">💎 Hacker Cyan</button>
+                        <button class="button theme-btn ${currentTheme === 'retro' ? 'active' : ''}" onclick="changeTheme('retro')">🧡 Retro Orange</button>
+                        <button class="button theme-btn ${currentTheme === 'vampire' ? 'active' : ''}" onclick="changeTheme('vampire')">❤️ Vampire Red</button>
+                        <button class="button theme-btn ${currentTheme === 'ocean' ? 'active' : ''}" onclick="changeTheme('ocean')">💙 Ocean Blue</button>
+                        <button class="button theme-btn ${currentTheme === 'forest' ? 'active' : ''}" onclick="changeTheme('forest')">💚 Forest Green</button>
+                        <button class="button theme-btn ${currentTheme === 'sunset' ? 'active' : ''}" onclick="changeTheme('sunset')">🌅 Sunset Blaze</button>
+                        <button class="button theme-btn ${currentTheme === 'royal' ? 'active' : ''}" onclick="changeTheme('royal')">👑 Royal Purple</button>
+                        <button class="button theme-btn ${currentTheme === 'gold' ? 'active' : ''}" onclick="changeTheme('gold')">✨ Golden Hour</button>
+                        <button class="button theme-btn ${currentTheme === 'ice' ? 'active' : ''}" onclick="changeTheme('ice')">❄️ Arctic Ice</button>
+                        <button class="button theme-btn ${currentTheme === 'fire' ? 'active' : ''}" onclick="changeTheme('fire')">🔥 Phoenix Fire</button>
+                        <button class="button theme-btn ${currentTheme === 'toxic' ? 'active' : ''}" onclick="changeTheme('toxic')">☢️ Toxic Waste</button>
+                        <button class="button theme-btn ${currentTheme === 'galaxy' ? 'active' : ''}" onclick="changeTheme('galaxy')">🌌 Galaxy Purple</button>
+                        <button class="button theme-btn ${currentTheme === 'cherry' ? 'active' : ''}" onclick="changeTheme('cherry')">🌸 Cherry Blossom</button>
+                        <button class="button theme-btn ${currentTheme === 'steel' ? 'active' : ''}" onclick="changeTheme('steel')">⚙️ Steel Gray</button>
+                        <button class="button theme-btn ${currentTheme === 'emerald' ? 'active' : ''}" onclick="changeTheme('emerald')">💎 Emerald Dream</button>
                     </div>
                 </div>
                 
@@ -1699,4 +1716,64 @@ function toggleParticles() {
             window.notifications.show(`Particles ${enabled ? 'enabled' : 'disabled'}`, 'info', 2000);
         }
     }
+}// Enhan
+ced theme changing function
+function changeTheme(themeName) {
+    if (window.themeManager) {
+        window.themeManager.applyTheme(themeName);
+        
+        // Add theme attribute to body for CSS targeting
+        document.body.setAttribute('data-theme', themeName);
+        
+        // Show notification with theme name
+        if (window.notifications) {
+            const themeNames = {
+                light: 'Classic Light',
+                dark: 'Dark Mode',
+                sepia: 'Vintage Sepia',
+                neon: 'Matrix Green',
+                cyberpunk: 'Cyberpunk Pink',
+                hacker: 'Hacker Cyan',
+                retro: 'Retro Orange',
+                vampire: 'Vampire Red',
+                ocean: 'Ocean Blue',
+                forest: 'Forest Green'
+            };
+            window.notifications.show(`🎨 Theme: ${themeNames[themeName]}`, 'success', 2000);
+        }
+        
+        // Create particle effect for theme change
+        if (window.particleSystem) {
+            const centerX = window.innerWidth / 2;
+            const centerY = window.innerHeight / 2;
+            window.particleSystem.createBurst(centerX, centerY, 20, 'success');
+        }
+        
+        // Refresh settings panel to show active theme
+        setTimeout(() => showSettings(), 100);
+    }
 }
+
+// Enhanced particle burst for celebrations
+function createCelebrationBurst() {
+    if (window.particleSystem) {
+        for (let i = 0; i < 5; i++) {
+            setTimeout(() => {
+                const x = Math.random() * window.innerWidth;
+                const y = Math.random() * window.innerHeight * 0.6;
+                window.particleSystem.createBurst(x, y, 15, 'badge');
+            }, i * 200);
+        }
+    }
+}
+
+// Add theme cycling with keyboard shortcut
+document.addEventListener('keydown', (e) => {
+    if (e.ctrlKey && e.key === 't') {
+        e.preventDefault();
+        if (window.themeManager) {
+            window.themeManager.toggleTheme();
+            createCelebrationBurst();
+        }
+    }
+});
