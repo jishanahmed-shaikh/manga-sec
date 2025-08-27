@@ -1547,46 +1547,124 @@ function checkAnswer(quizIndex, index, score, correct) {
     }
 }
 
-// Initialize systems on load
+// Simple initialization that works even if modules fail
 window.addEventListener('load', function () {
-    // Initialize all systems
-    window.soundEffects = new SoundEffects();
-    window.notifications = new NotificationSystem();
-    window.themeManager = new ThemeManager();
-    window.particleSystem = new ParticleSystem();
-    window.keyboardShortcuts = new KeyboardShortcuts();
-    window.analytics = new Analytics();
-    window.accessibility = new AccessibilityManager();
-    window.router = new Router();
+    console.log('MANGA-SEC: Starting initialization...');
+    
+    // Initialize systems with error handling
+    try {
+        if (typeof SoundEffects !== 'undefined') {
+            window.soundEffects = new SoundEffects();
+        }
+    } catch (e) { console.log('Sound effects failed:', e); }
+    
+    try {
+        if (typeof NotificationSystem !== 'undefined') {
+            window.notifications = new NotificationSystem();
+        }
+    } catch (e) { console.log('Notifications failed:', e); }
+    
+    try {
+        if (typeof ThemeManager !== 'undefined') {
+            window.themeManager = new ThemeManager();
+        }
+    } catch (e) { console.log('Theme manager failed:', e); }
+    
+    try {
+        if (typeof ParticleSystem !== 'undefined') {
+            window.particleSystem = new ParticleSystem();
+        }
+    } catch (e) { console.log('Particle system failed:', e); }
+    
+    try {
+        if (typeof KeyboardShortcuts !== 'undefined') {
+            window.keyboardShortcuts = new KeyboardShortcuts();
+        }
+    } catch (e) { console.log('Keyboard shortcuts failed:', e); }
+    
+    try {
+        if (typeof Analytics !== 'undefined') {
+            window.analytics = new Analytics();
+        }
+    } catch (e) { console.log('Analytics failed:', e); }
+    
+    try {
+        if (typeof AccessibilityManager !== 'undefined') {
+            window.accessibility = new AccessibilityManager();
+        }
+    } catch (e) { console.log('Accessibility failed:', e); }
+    
+    try {
+        if (typeof Router !== 'undefined') {
+            window.router = new Router();
+        }
+    } catch (e) { console.log('Router failed:', e); }
 
     // Load user progress
-    loadUserProgress();
+    try {
+        loadUserProgress();
+        console.log('MANGA-SEC: User progress loaded');
+    } catch (e) { 
+        console.log('User progress failed:', e);
+        // Initialize default progress if loading fails
+        window.userProgress = {
+            totalQuizzes: 0,
+            perfectScores: 0,
+            currentStreak: 0,
+            bestStreak: 0,
+            badges: [],
+            quizHistory: [],
+            lastQuizDate: null,
+            settings: {
+                theme: 'light',
+                sound: true,
+                notifications: true
+            }
+        };
+    }
     
     // Add panel animations
-    addPanelAnimation();
+    try {
+        addPanelAnimation();
+        console.log('MANGA-SEC: Panel animations added');
+    } catch (e) { console.log('Panel animations failed:', e); }
 
-    // Track initial page load
-    if (window.analytics) {
-        window.analytics.trackPageView('home');
-    }
-
-    // Hide loading screen and start app
+    // Force hide loading screen and start app
+    console.log('MANGA-SEC: Starting app in 1 second...');
     setTimeout(() => {
-        const loading = document.querySelector('.loading-panel');
-        if (loading) {
-            loading.style.display = 'none';
+        try {
+            const loading = document.querySelector('.loading-panel');
+            if (loading) {
+                loading.style.display = 'none';
+                console.log('MANGA-SEC: Loading screen hidden');
+            }
+            
+            loadLanding();
+            console.log('MANGA-SEC: Landing page loaded');
+            
+            // Show welcome for new users
+            if (window.userProgress && window.userProgress.totalQuizzes === 0) {
+                setTimeout(() => {
+                    if (window.notifications) {
+                        window.notifications.show('🎉 Welcome to MANGA-SEC!', 'success', 4000);
+                    }
+                }, 1000);
+            }
+        } catch (e) {
+            console.error('MANGA-SEC: Critical error during startup:', e);
+            // Emergency fallback - show basic interface
+            const app = document.getElementById('app');
+            if (app) {
+                app.innerHTML = `
+                    <div class="manga-panel">
+                        <h2>MANGA-SEC</h2>
+                        <p>Emergency mode - Basic functionality only</p>
+                        <button onclick="location.reload()">🔄 RELOAD</button>
+                    </div>
+                `;
+            }
         }
-        loadLanding();
-        
-        // Show welcome for new users
-        if (userProgress.totalQuizzes === 0) {
-            setTimeout(() => {
-                if (window.notifications) {
-                    window.notifications.show('🎉 Welcome to MANGA-SEC!', 'success', 4000);
-                }
-            }, 1000);
-        }
-    }, 2000);
+    }, 1000);
 });
 
 // PWA Service Worker Registration

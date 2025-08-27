@@ -88,6 +88,26 @@
         </div>
     </div>
 
+    <script>
+        // Emergency fallback if scripts fail to load
+        setTimeout(() => {
+            const loading = document.querySelector('.loading-panel');
+            const app = document.getElementById('app');
+            if (loading && loading.style.display !== 'none' && app && !app.innerHTML.trim()) {
+                console.log('MANGA-SEC: Emergency fallback activated');
+                loading.style.display = 'none';
+                app.innerHTML = `
+                    <div class="manga-panel" style="text-align: center; padding: 2rem;">
+                        <h2 style="color: #ff6b6b; margin-bottom: 1rem;">⚡ MANGA-SEC ⚡</h2>
+                        <p style="margin-bottom: 2rem;">Cybersecurity Adventure Loading...</p>
+                        <button onclick="location.reload()" style="padding: 1rem 2rem; font-size: 1.2rem; background: #333; color: white; border: none; cursor: pointer;">
+                            🔄 RELOAD SYSTEM
+                        </button>
+                    </div>
+                `;
+            }
+        }, 5000);
+    </script>
     <script src="js/sound-effects.js"></script>
     <script src="js/notifications.js"></script>
     <script src="js/theme-manager.js"></script>
