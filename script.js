@@ -1550,50 +1550,50 @@ function checkAnswer(quizIndex, index, score, correct) {
 // Simple initialization that works even if modules fail
 window.addEventListener('load', function () {
     console.log('MANGA-SEC: Starting initialization...');
-    
+
     // Initialize systems with error handling
     try {
         if (typeof SoundEffects !== 'undefined') {
             window.soundEffects = new SoundEffects();
         }
     } catch (e) { console.log('Sound effects failed:', e); }
-    
+
     try {
         if (typeof NotificationSystem !== 'undefined') {
             window.notifications = new NotificationSystem();
         }
     } catch (e) { console.log('Notifications failed:', e); }
-    
+
     try {
         if (typeof ThemeManager !== 'undefined') {
             window.themeManager = new ThemeManager();
         }
     } catch (e) { console.log('Theme manager failed:', e); }
-    
+
     try {
         if (typeof ParticleSystem !== 'undefined') {
             window.particleSystem = new ParticleSystem();
         }
     } catch (e) { console.log('Particle system failed:', e); }
-    
+
     try {
         if (typeof KeyboardShortcuts !== 'undefined') {
             window.keyboardShortcuts = new KeyboardShortcuts();
         }
     } catch (e) { console.log('Keyboard shortcuts failed:', e); }
-    
+
     try {
         if (typeof Analytics !== 'undefined') {
             window.analytics = new Analytics();
         }
     } catch (e) { console.log('Analytics failed:', e); }
-    
+
     try {
         if (typeof AccessibilityManager !== 'undefined') {
             window.accessibility = new AccessibilityManager();
         }
     } catch (e) { console.log('Accessibility failed:', e); }
-    
+
     try {
         if (typeof Router !== 'undefined') {
             window.router = new Router();
@@ -1604,7 +1604,7 @@ window.addEventListener('load', function () {
     try {
         loadUserProgress();
         console.log('MANGA-SEC: User progress loaded');
-    } catch (e) { 
+    } catch (e) {
         console.log('User progress failed:', e);
         // Initialize default progress if loading fails
         window.userProgress = {
@@ -1622,7 +1622,7 @@ window.addEventListener('load', function () {
             }
         };
     }
-    
+
     // Add panel animations
     try {
         addPanelAnimation();
@@ -1638,10 +1638,10 @@ window.addEventListener('load', function () {
                 loading.style.display = 'none';
                 console.log('MANGA-SEC: Loading screen hidden');
             }
-            
+
             loadLanding();
             console.log('MANGA-SEC: Landing page loaded');
-            
+
             // Show welcome for new users
             if (window.userProgress && window.userProgress.totalQuizzes === 0) {
                 setTimeout(() => {
