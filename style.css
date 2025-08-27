@@ -424,6 +424,7 @@ body {
         0 0 0 2px var(--comic-white),
         0 0 0 6px var(--comic-black);
     transform: rotate(-1deg);
+    animation: pulse 2s ease-in-out infinite;
 }
 
 .loading-text {
@@ -443,9 +444,31 @@ body {
 }
 
 @keyframes loadingDots {
-    0%, 20% { opacity: 0.2; }
-    50% { opacity: 1; }
-    80%, 100% { opacity: 0.2; }
+    0%, 20% { opacity: 0.2; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.2); }
+    80%, 100% { opacity: 0.2; transform: scale(1); }
+}
+
+/* Enhanced loading animations */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+@keyframes slideInFromLeft {
+    0% { transform: translateX(-100%); opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideInFromRight {
+    0% { transform: translateX(100%); opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes fadeInUp {
+    0% { transform: translateY(30px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
 }
 
 /* COMIC FOOTER */
