@@ -199,13 +199,14 @@ const embeddedImages = {
 // Function to create embedded image HTML
 function createEmbeddedImage(imageConfig) {
     return `
-        <div class="image-container">
+        <div class="image-container" style="display: block !important; visibility: visible !important;">
             <img src="${imageConfig.src}" 
                  alt="${imageConfig.caption}" 
                  class="embedded-image ${imageConfig.position}"
-                 onerror="this.style.display='none'; console.log('Image failed to load: ${imageConfig.src}');"
-                 onload="this.style.opacity='1';">
-            <div class="image-caption">${imageConfig.caption}</div>
+                 style="display: block !important; opacity: 1 !important; visibility: visible !important; width: 200px !important; height: auto !important;"
+                 onerror="console.log('Image failed to load: ${imageConfig.src}'); this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjBmMGYwIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzMzMyIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkltYWdlPC90ZXh0Pjwvc3ZnPg==';"
+                 onload="console.log('Image loaded successfully: ${imageConfig.src}');">
+            <div class="image-caption" style="display: block !important; visibility: visible !important;">${imageConfig.caption}</div>
         </div>
     `;
 }

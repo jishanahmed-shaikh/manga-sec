@@ -128,22 +128,24 @@ body {
 
 /* EMBEDDED ANIME IMAGES */
 .embedded-image {
-    display: inline-block;
-    max-width: 250px;
-    height: auto;
-    margin: 20px;
-    border: 4px solid var(--comic-black);
-    border-radius: 0;
-    background: var(--comic-white);
+    display: block !important;
+    width: 200px !important;
+    height: auto !important;
+    margin: 20px auto !important;
+    border: 4px solid var(--comic-black) !important;
+    border-radius: 8px !important;
+    background: var(--comic-white) !important;
     box-shadow: 
         6px 6px 0px var(--comic-black),
         0 0 0 2px var(--comic-white),
-        0 0 0 6px var(--comic-black);
-    transform: rotate(-3deg);
-    transition: all 0.4s ease;
-    opacity: 1;
-    filter: grayscale(10%) contrast(1.2) brightness(1.1);
-    animation: imageAppear 0.8s ease-out forwards;
+        0 0 0 6px var(--comic-black) !important;
+    transform: rotate(-2deg) !important;
+    transition: all 0.4s ease !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    filter: grayscale(0%) contrast(1.3) brightness(1.2) !important;
+    z-index: 10 !important;
+    position: relative !important;
 }
 
 .embedded-image:hover {
@@ -156,39 +158,53 @@ body {
 }
 
 .embedded-image.left {
-    float: left;
-    margin-right: 30px;
-    margin-bottom: 20px;
+    display: block !important;
+    margin: 20px auto 20px 20px !important;
+    float: none !important;
 }
 
 .embedded-image.right {
-    float: right;
-    margin-left: 30px;
-    margin-bottom: 20px;
+    display: block !important;
+    margin: 20px 20px 20px auto !important;
+    float: none !important;
 }
 
 .embedded-image.center {
-    display: block;
-    margin: 30px auto;
-    float: none;
+    display: block !important;
+    margin: 20px auto !important;
+    float: none !important;
 }
 
 .image-caption {
-    font-family: 'Press Start 2P', monospace;
-    font-size: 0.6em;
-    color: var(--comic-black);
-    text-align: center;
-    margin-top: 10px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-weight: bold;
-    text-shadow: 1px 1px 0px var(--comic-gray);
+    font-family: 'Press Start 2P', monospace !important;
+    font-size: 0.7em !important;
+    color: var(--comic-black) !important;
+    text-align: center !important;
+    margin-top: 15px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+    font-weight: bold !important;
+    text-shadow: 2px 2px 0px var(--comic-white), -1px -1px 0px var(--comic-black) !important;
+    background: var(--comic-white) !important;
+    padding: 8px 12px !important;
+    border: 2px solid var(--comic-black) !important;
+    border-radius: 15px !important;
+    display: block !important;
+    width: fit-content !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
 }
 
 .image-container {
-    text-align: center;
-    margin: 30px 0;
-    clear: both;
+    display: block !important;
+    text-align: center !important;
+    margin: 30px auto !important;
+    padding: 20px !important;
+    clear: both !important;
+    width: 100% !important;
+    max-width: 300px !important;
+    visibility: visible !important;
+    opacity: 1 !important;
 }
 
 .image-container::after {
@@ -1616,36 +1632,6 @@ CCESSIBILITY OPTIONS STYLES */
     left: 100%;
 }
 
-/* Image appearance animation */
-@keyframes imageAppear {
-    0% {
-        opacity: 0;
-        transform: rotate(-3deg) scale(0.8) translateY(20px);
-    }
-    100% {
-        opacity: 1;
-        transform: rotate(-3deg) scale(1) translateY(0);
-    }
-}
+/* Image appearance - removed problematic animation */
 
-/* Enhanced image visibility */
-.image-container {
-    position: relative;
-    display: inline-block;
-    margin: 15px;
-}
-
-.image-caption {
-    position: absolute;
-    bottom: -30px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: var(--comic-black);
-    color: var(--comic-white);
-    padding: 5px 10px;
-    border-radius: 15px;
-    font-size: 0.8em;
-    font-weight: bold;
-    white-space: nowrap;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-}
+/* Enhanced image visibility - simplified */
