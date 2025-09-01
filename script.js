@@ -1084,6 +1084,13 @@ function showSettings() {
                 </div>
                 
                 <div class="setting-item">
+                    <h3>✨ Background Effects</h3>
+                    <button class="button" onclick="toggleBackgroundEffects()" id="bg-effects-toggle">
+                        🌟 ACTIVE
+                    </button>
+                </div>
+                
+                <div class="setting-item">
                     <h3>♿ Accessibility</h3>
                     <div class="accessibility-options">
                         <button class="button" onclick="toggleHighContrast()" id="contrast-toggle">
@@ -1138,6 +1145,22 @@ function toggleSound() {
         document.getElementById('sound-toggle').innerHTML = enabled ? '🔊 ON' : '🔇 OFF';
         if (window.notifications) {
             window.notifications.show(`Sound ${enabled ? 'enabled' : 'disabled'}`, 'info', 2000);
+        }
+    }
+}
+
+function toggleBackgroundEffects() {
+    if (window.backgroundEffects) {
+        const enabled = window.backgroundEffects.toggle();
+        
+        // Update button text
+        const button = document.getElementById('bg-effects-toggle');
+        if (button) {
+            button.textContent = enabled ? '🌟 ACTIVE' : '🌟 INACTIVE';
+        }
+        
+        if (window.notifications) {
+            window.notifications.show(`Background effects ${enabled ? 'enabled' : 'disabled'}`, 'info', 2000);
         }
     }
 }
@@ -1559,6 +1582,12 @@ window.addEventListener('load', function () {
             window.tooltipSystem = new TooltipSystem();
         }
     } catch (e) { console.log('Tooltip system failed:', e); }
+
+    try {
+        if (typeof BackgroundEffects !== 'undefined') {
+            window.backgroundEffects = new BackgroundEffects();
+        }
+    } catch (e) { console.log('Background effects failed:', e); }
 
     try {
         if (typeof ParticleSystem !== 'undefined') {
