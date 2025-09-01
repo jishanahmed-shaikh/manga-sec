@@ -1918,4 +1918,176 @@ CCESSIBILITY OPTIONS STYLES */
 
 .loader-dots span:nth-child(2) { animation-delay: 0.2s; }
 .loader-dots span:nth-child(3) { animation-delay: 0.4s; }
-.loader-dots span:nth-child(4) { animation-delay: 0.6s; }
+.loader-dots span:nth-child(4) { animation-delay: 0.6s; }/* To
+oltip System Styles */
+.manga-tooltip {
+    position: fixed;
+    z-index: 10000;
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.tooltip-content {
+    position: relative;
+    background: var(--comic-black);
+    color: var(--comic-white);
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-family: 'Comic Neue', cursive;
+    font-size: 0.9em;
+    max-width: 250px;
+    box-shadow: 
+        0 4px 12px rgba(0, 0, 0, 0.3),
+        0 0 0 2px var(--comic-white),
+        0 0 0 4px var(--comic-black);
+    border: 2px solid var(--comic-white);
+}
+
+.tooltip-text {
+    line-height: 1.4;
+    text-align: center;
+}
+
+.tooltip-arrow {
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 8px solid var(--comic-black);
+}
+
+.tooltip-arrow::before {
+    content: '';
+    position: absolute;
+    bottom: 2px;
+    left: -6px;
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid var(--comic-white);
+}
+
+/* Help Tooltip Styles */
+.help-tooltip {
+    position: fixed;
+    z-index: 10001;
+    max-width: 300px;
+    animation: helpTooltipAppear 0.3s ease-out;
+}
+
+.help-tooltip-content {
+    background: var(--comic-panel-bg);
+    border: 3px solid var(--comic-black);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+.help-title {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.8em;
+    color: var(--comic-black);
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.help-description {
+    font-family: 'Comic Neue', cursive;
+    font-size: 1em;
+    color: var(--comic-text);
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+.help-close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: var(--comic-black);
+    color: var(--comic-white);
+    border: none;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    font-size: 1.2em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.help-close:hover {
+    background: var(--comic-gray);
+    transform: scale(1.1);
+}
+
+@keyframes helpTooltipAppear {
+    0% {
+        opacity: 0;
+        transform: scale(0.8) translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* Enhanced button hover effects with tooltips */
+.button:hover {
+    transform: translateY(-2px) scale(1.02);
+}
+
+.theme-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px var(--comic-shadow);
+}
+
+/* Tooltip-aware elements */
+[data-tooltip] {
+    cursor: help;
+    position: relative;
+}
+
+.embedded-image[data-tooltip] {
+    cursor: pointer;
+}
+
+.embedded-image[data-tooltip]:hover {
+    transform: rotate(0deg) scale(1.05);
+    filter: brightness(1.1) contrast(1.1);
+}
+
+/* Theme-specific tooltip colors */
+[data-theme="neon"] .manga-tooltip .tooltip-content {
+    background: #00ff41;
+    color: #000000;
+    box-shadow: 
+        0 4px 12px rgba(0, 255, 65, 0.4),
+        0 0 0 2px #000000,
+        0 0 0 4px #00ff41;
+}
+
+[data-theme="cyberpunk"] .manga-tooltip .tooltip-content {
+    background: #ff0080;
+    color: #000000;
+    box-shadow: 
+        0 4px 12px rgba(255, 0, 128, 0.4),
+        0 0 0 2px #000000,
+        0 0 0 4px #ff0080;
+}
+
+[data-theme="vampire"] .manga-tooltip .tooltip-content {
+    background: #cc0000;
+    color: #ffffff;
+    box-shadow: 
+        0 4px 12px rgba(204, 0, 0, 0.4),
+        0 0 0 2px #ffffff,
+        0 0 0 4px #cc0000;
+}

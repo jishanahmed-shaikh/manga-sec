@@ -1555,6 +1555,12 @@ window.addEventListener('load', function () {
     } catch (e) { console.log('Loading system failed:', e); }
 
     try {
+        if (typeof TooltipSystem !== 'undefined') {
+            window.tooltipSystem = new TooltipSystem();
+        }
+    } catch (e) { console.log('Tooltip system failed:', e); }
+
+    try {
         if (typeof ParticleSystem !== 'undefined') {
             window.particleSystem = new ParticleSystem();
         }
