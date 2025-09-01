@@ -1545,6 +1545,16 @@ window.addEventListener('load', function () {
     } catch (e) { console.log('Progress tracker failed:', e); }
 
     try {
+        if (typeof LoadingSystem !== 'undefined') {
+            window.loadingSystem = new LoadingSystem();
+            // Show initial loading animation
+            window.loadingSystem.show(2500, () => {
+                console.log('MANGA-SEC fully loaded!');
+            });
+        }
+    } catch (e) { console.log('Loading system failed:', e); }
+
+    try {
         if (typeof ParticleSystem !== 'undefined') {
             window.particleSystem = new ParticleSystem();
         }
