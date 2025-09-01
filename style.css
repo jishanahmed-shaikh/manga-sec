@@ -1634,4 +1634,59 @@ CCESSIBILITY OPTIONS STYLES */
 
 /* Image appearance - removed problematic animation */
 
-/* Enhanced image visibility - simplified */
+/* Enhanced image visibility - simplified *//* Progress
+ Tracker Styles */
+.progress-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+    margin: 30px 0;
+}
+
+.stat-item {
+    background: var(--comic-panel-bg);
+    border: 3px solid var(--comic-black);
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.stat-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px var(--comic-shadow);
+}
+
+.stat-icon {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.stat-label {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.6em;
+    color: var(--comic-gray);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+}
+
+.stat-value {
+    font-family: 'Bangers', cursive;
+    font-size: 1.8em;
+    color: var(--comic-black);
+    font-weight: bold;
+}
+
+.progress-message {
+    background: var(--comic-light-gray);
+    border: 2px solid var(--comic-black);
+    border-radius: 15px;
+    padding: 20px;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.progress-message p {
+    margin: 10px 0;
+    font-size: 1.1em;
+}

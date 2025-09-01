@@ -1539,6 +1539,12 @@ window.addEventListener('load', function () {
     } catch (e) { console.log('Theme manager failed:', e); }
 
     try {
+        if (typeof ProgressTracker !== 'undefined') {
+            window.progressTracker = new ProgressTracker();
+        }
+    } catch (e) { console.log('Progress tracker failed:', e); }
+
+    try {
         if (typeof ParticleSystem !== 'undefined') {
             window.particleSystem = new ParticleSystem();
         }
